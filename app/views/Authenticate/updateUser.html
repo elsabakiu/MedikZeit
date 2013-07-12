@@ -1,0 +1,87 @@
+#{extends 'main.html' /}
+#{set title:'MedikZeit - New User Sign-up' /}
+
+<div id="user">
+  			<ul>
+  					<li><a href="@{Authenticate.doRegister() }" class="dropdown">Sign-up</a>
+    				
+					</li>
+
+  					<li><a href="@{Authenticate.login() }" class="dropdown">Login</a>
+    				
+					</li>
+			</ul>
+				</div>
+		</div>
+	</div>
+</div>
+
+
+ <!-- End navigation area -->  
+ 
+ 
+<!-- Start Main Body -->
+
+<div id="main">
+      <div id="content" role="main">
+      
+
+			<div><h1>Sign up free today</h1></div>
+
+			<div id="signup-form">
+				<form action="@{Authenticate.updateUser() }" class="formtastic person" id="new_person" method="post">
+		
+				<fieldset class="inputs">
+				<legend><span>Change My Profile</span></legend>
+					<ol>
+			
+    					<li class="string optional" id="person_first_name_input">
+    					<span class="error">#{error 'user.firstname' /}</span>
+    					<label for="person_first_name">First Name</label>
+    					<input autocomplete="off" id="person_first_name"  name="user.firstname" size="50"  />
+    					</li>
+    		
+    					<li class="string optional" id="person_last_name_input">
+    					<span class="error">#{error 'user.lastname' /}</span>
+    					<label for="person_last_name">Last Name</label>
+    					<input autocomplete="off" id="person_last_name" maxlength="255" name="user.lastname" size="50" type="text" />
+    					</li>
+    		
+    					<li class="string optional" id="person_user_attributes_email_input">
+    					<span class="error">#{error 'user.email' /}</span>
+    					<label for="person_user_attributes_email">Email</label>
+    					<input autocomplete="off" id="person_user_attributes_email" maxlength="100" name="user.email" size="50" />
+						<p class="inline-hints">This will be your username</p>
+						</li>
+						
+						<li class="password optional" id="person_user_attributes_password_input">
+						<span class="error">#{error 'user.password' /}</span>
+      					<label for="person_user_attributes_password">Password</label>
+      					<input autocomplete="off" id="person_user_attributes_password" name="user.password" size="50" type="password" />
+      					</li>
+      		
+			
+      				</ol>
+				</fieldset>
+		
+				<fieldset class="buttons">
+					<ol><input id="person_submit" name="commit" type="submit" value="Complete Your Registration" /></ol>
+				</fieldset>
+				</form>
+				</div>
+				
+				<!-- °°°°°°°° -->
+				<div id="signup-extra">
+  				<h4>Thanks for choosing MedikZeit!</h4>
+
+  				<p>You're now on your way to:</p>
+  				<ul id="benefits">
+    			<li class="appointments"><h5>Managing your appointments</h5></li>
+  				</ul>
+  				</div>
+  				<!-- °°°°°°°° -->
+
+		</div>
+	</div>
+    
+<!-- °°°°°°°° -->

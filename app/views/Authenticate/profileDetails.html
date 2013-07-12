@@ -1,0 +1,74 @@
+#{extends 'main.html' /}
+#{set title:'MedikZeit - New User Sign-up' /}
+
+<div id="user">
+  			<ul>
+  					<li><a href="@{Authenticate.doRegister() }" class="dropdown">Sign-up</a>
+    				
+					</li>
+
+  					<li><a href="@{Authenticate.login() }" class="dropdown">Login</a>
+    				
+					</li>
+			</ul>
+				</div>
+		</div>
+	</div>
+</div>
+
+
+ <!-- End navigation area -->  
+ 
+ 
+<!-- Start Main Body -->
+
+<div id="main">
+      <div id="content" role="main">
+
+
+<div><h1>MyMedikZeit Profile</h1></div>
+
+			<div><h1>MyMedikZeit Profile</h1></div>
+
+			<div id="signup-form">
+				<form action="@{Application.show()}" class="formtastic person" id="new_person" method="post">
+		
+				<fieldset class="inputs">
+				<legend><span>${user.firstname} ${user.lastname} Profile Details</span></legend>
+					<ol>
+			
+    					<li class="string optional" id="person_first_name_input">
+    					<label for="person_first_name">First Name</label>: ${user.firstname}
+    					</li>
+    		
+    					<li class="string optional" id="person_last_name_input">
+    					<label for="person_last_name">Last Name</label> : ${user.lastname}
+    					</li>
+    		
+    					<li class="string optional" id="person_user_attributes_email_input">
+    					<label for="person_user_attributes_email">Email</label> : ${user.email}
+						<p class="inline-hints">This will be your username</p>
+						</li>
+						
+						<li class="password optional" id="person_user_attributes_password_input">
+      					<label for="person_user_attributes_password">Password</label> : ${user.password}
+      					</li>
+      		
+      					
+      					
+			
+      				</ol>
+				</fieldset>
+		
+				<fieldset class="buttons">
+					<ol><input id="person_submit" name="commit" type="submit" value="Edit Profile" /></ol>
+				</fieldset>
+				</form>
+				</div>
+				
+				
+
+		</div>
+	</div>
+    
+<!-- °°°°°°°° -->

@@ -1,0 +1,17 @@
+#{extends 'main.html' /}
+#{set title:'MedikZeit - Select Doctors Appointment Time' /}
+
+<table>
+	<tbody>
+	    #{list doctors, as:'doctor'}
+                <tr>
+                    <td>${doctor.docPhoto}, ${doctor.firstName}, ${doctor.lastName}, ${doctor.specializationName}, ${doctor.city}, ${doctor.streetName}, ${doctor.streetNumber}, <a href="@{show(doctor.docID)}">View Doctor</a></td>
+                    <td>${doctor.appointmentDate(date), ${doctor.appointmentDate(date)}</td>
+                    <td>
+                        <a href="@{show(doctor.id)}">View Doctor</a>
+                    </td>
+                </tr>
+            #{/list}
+        </tbody>
+	</tbody>
+</table>

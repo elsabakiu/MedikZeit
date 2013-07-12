@@ -1,0 +1,81 @@
+#{extends 'main.html' /}
+#{set title:'MedikZeit - Doctor Profile' /}   
+
+<script src="@{'/public/javascripts/jquery-1.9.1.js'}" type="text/javascript" charset="${_response_encoding}"></script>
+<script src="@{'/public/javascripts/jquery-ui-1.10.3.custom.js'}" type="text/javascript" charset="${_response_encoding}"></script>
+<script src="@{'/public/javascripts/jquery.tools-1.2.5.toolbox.expose.min.js'}" type="text/javascript" charset="${_response_encoding}"></script>
+<script src="@{'/public/javascripts/jquery.validationEngine-en.js'}" type="text/javascript" charset="${_response_encoding}"></script>
+<script src="@{'/public/javascripts/jquery.validationEngine.js'}" type="text/javascript" charset="${_response_encoding}"></script>
+ 
+   				
+<script type="text/javascript">
+
+			jQuery(document).ready(function(){
+
+				// binds form submission and fields to the validation engine
+				jQuery("#signUpDoctor").validationEngine(
+					'attach', 
+					{bindMethod:"live"}
+				);
+				
+			});
+ 		
+</script>
+  
+<div id="main">
+      <div id="content" role="main">
+      
+<form id="signUpDoctor" action = @{Authenticate.saveDoctor()} class="formular" method="POST" accept-charset="${_response_encoding}">
+  
+<h2>Personal Info</h2>
+
+		<p>
+		<label>First name</label>
+			<input type="text" name="doctor.user.firstname" id="doctor.user.firstname" class="validate[required,maxSize[20]] text-input"/>
+		</p>
+		<p>
+			<label>Last name</label>
+			<input type="text" name="doctor.user.lastname" id="doctor.user.lastname" class="validate[required,maxSize[20]] text-input"/>
+		</p>
+		
+		<p>
+			<label>Clinic Name</label>
+			<input type="text" name="doctor.docClinicName" id="doctor.docClinicName" class="validate[maxSize[50]] text-input"/>
+		</p>
+		<p>
+			<label>Insurance</label>
+			#{select 'doctor.user.insurance.id'}
+				#{option 1} Public Insurance #{/option}
+				#{option 2} Private Insurance #{/option}
+			#{/select}
+    	</p>
+		<p>
+			<label>Specialization</label>
+			#{select 'doctor.docSpecialization.id'}
+				#{option 1} Dentist #{/option}
+				#{option 2} Dermatologist #{/option}
+			#{/select}
+    	</p>
+    </p>
+    
+    <h2>Account Information</h2>
+   			<p>
+				<label>Email</label>
+				<input type="text" name="doctor.user.email" id="doctor.user.email" class = "validate[email, required, maxSize[20]]"/>
+			</p>
+			<p>
+				<label>Password</label>
+				<input type="password" name="doctor.user.password" id="password" class = "validate[required,maxSize[20]] text-input" />
+			</p>
+			<p>
+				<label>Confirm password</label>
+				<input type="password" name="confirmPassword" id="confirmPassword" class = "validate[maxSize[20], equals[password]] text-input" />
+			</p>	
+			<p class="buttons" style = "align : right">
+				<input type="submit" value="Save" class = "submit" id="saveDoctorData" />
+			</p>
+		</form>
+		
+		
+</div>
+</div>

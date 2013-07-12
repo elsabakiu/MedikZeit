@@ -1,0 +1,210 @@
+#{extends 'main.html' /}
+#{set title:'MedikZeit - Doctors list' /}
+
+ <!-- End navigation area -->  
+ 
+ 
+<!-- Start Main Body -->
+
+<div id="main">
+<div id="content" role="main">
+			
+#{if doctors}
+<div id="search-box"><h1>Choose a doctor and free time slot from our extensive list</h1></div>
+#{/if}
+			
+#{if doctors}
+<div id="search-results" class="list">
+
+<ul>
+
+<li> 
+
+<div class="vcard"><h4> Doctor </h4></div>
+						
+
+<div class="bio"> <h4>Address</h4> </div>
+						
+
+<div class="appts">
+
+
+<table class="appointments" style="float:left;">
+
+<thead>
+								
+
+<!-- Display the days of the weeks and the dates starting from the current date -->
+
+<tr>
+
+<th>
+			%{
+				if(calendar.getTime() > new Date())
+				{
+					Calendar calPrevious = Calendar.getInstance();
+		 			calPrevious.setTime(calendar.getTime());
+		 			calPrevious.add(Calendar.DAY_OF_MONTH, -7);
+			%}
+
+<a href = "@{Application.listDoctors(doctorSpecialization, city, insurance, calPrevious.getTime())}"> 
+<img src="./public/images/arrow-left.png" alt="Previous" ></img> 
+</a>
+							%{
+								}//end if 
+							%}
+
+</th>
+										%{
+										   for(int i = 1; i <= 7; i++)
+										   {
+										}%
+											
+<th> 
+<strong> ${calendar.getDisplayName(Calendar.DAY_OF_WEEK, Calendar.SHORT, Locale.US)}. </strong> ${calendar.get(Calendar.DAY_OF_MONTH)}/${calendar.get(Calendar.MONTH) + 1}/${calendar.get(Calendar.YEAR)} 
+</th>
+										
+										%{
+										   	calendar.add(Calendar.DAY_OF_MONTH, 1);
+										   }//end for
+										}%
+
+<th>
+
+<a href = "@{Application.listDoctors(doctorSpecialization, city, insurance, calendar.getTime())}"> 
+<img src="./public/images/arrow-right.png" alt="Next" ></img> 
+</a>
+
+</th>	
+
+</tr> 
+									
+
+</thead>	
+
+<tbody>
+
+</tbody>
+
+</table>
+
+</div>
+
+</li>
+
+</ul>
+			
+			%{
+			   int d = 0;
+			}%
+			
+			#{list items:doctors, as:'doctor'}
+
+<ul>
+
+<li> 
+
+<div class="vcard">
+
+<h4> <a href="#">Dr. ${doctor.user.firstname} ${doctor.user.lastname}</a></h4>
+<a width = "10" height = "10" class="photo" alt="" href="#"><img src="${doctor.docPhoto}" alt="Doctor Photo" ></img></a>
+
+<div class="adr"> 
+<p class="street-address">${doctor.docSpecialization.specializationName}</p>
+<p>${doctor.user.insurance}</p> 
+</div>
+<div class="meta"></div>
+</div>
+						
+<div class="bio">
+<p class="bio-text"><strong>${doctor.docClinicName}</strong></p> 
+<p class="bio-text">${doctor.user.address.city}</p> 
+<p class="bio-text">${doctor.user.address.streetName}  ${doctor.user.address.streetNumber}</p> 
+</div>
+						
+
+<div class="appts">
+<table class="appointments" style="float:left;">
+<thead>
+</thead>
+								
+<!-- Display the free time slots for each day of the week and for each doctor -->
+								
+<tbody>
+								
+								%{
+									Calendar[][] freeSlots = freeSlotsForAllDoctors.get(d);
+									for(int j = 0; j < 10; j++)
+									{
+								 }%
+								 
+<tr>
+<td>
+</td>
+										%{
+											
+											for(int k = 0; k < 7; k++)
+											{
+												String time = "";
+												if(freeSlots[k][j] != null)
+												{
+													String middle = ":";
+							 						if(freeSlots[k][j].get(Calendar.MINUTE) == 0)
+							 								middle = ":0";
+							 						time = freeSlots[k][j].get(Calendar.HOUR_OF_DAY) + middle + freeSlots[k][j].get(Calendar.MINUTE);
+						 						}
+											
+										 }%
+										 
+<td width = "50px"><a rel="nofollow" href="@{AppointmentBooking.bookAppointment(doctor, freeSlots[k][j])}"> ${time} </a></td>
+
+										%{
+											}//end for(int k = 0; k < 7; k++)
+										%}
+<td>
+</td>
+</tr>
+								
+								%{
+									}//end for(int j = 0; j < 15; j++)
+								%}
+								
+</tbody>
+</table>
+</div>
+</li>
+			%{
+				d++;
+			%}
+		#{/list}
+		#{/if}
+		#{else}
+			
+
+
+
+
+<div id="search-results" class="list">
+			
+
+<li> 
+There are no doctors with the specified filters
+</li>
+</ul>
+</div>
+			
+#{/else}
+</div>
+		
+#{if doctors.size() > 5}
+<div class="pagination">
+<span class="disabled prev_page"> « Previous </span>
+<span class="current"> 1 </span>
+<a rel="next" href="#?page=2"> 2 </a>
+<a class="next_page" rel="next" href="#?page=2">Next »</a>
+</div>	
+#{/if}
+
+</div>
+</div>
+    

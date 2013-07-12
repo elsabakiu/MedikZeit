@@ -1,0 +1,291 @@
+#{extends 'main.html' /}
+#{set title:'MedikZeit - Book Appointment' /}
+
+
+<script src="./public/javascripts/default.js" type="text/javascript"></script>
+<script src="./public/javascripts/application.js" type="text/javascript"></script>
+<script type="text/javascript">
+//<![CDATA[
+$(document).ready(function() {
+    
+        $("form#new_person_booking").submit(function() {
+
+            $(this).find(".fakefield").each(function() {
+                $(this).remove();
+                $(this).parent().find("input[type=password]").show();
+            });
+
+            $(this).find(".toggleval").each(function() {
+                if ($(this).val() == $(this).data("defText")) {
+                    $(this).val("");
+                }
+            });
+
+            $(this).find(".toggleField[type=password]").each(function() {
+                if ($(this).val() == $(this).attr("defText")) {
+                    $(this).val("");
+                }
+            });
+        });
+
+        $("#new_person_booking input[type=password]").each(function() {
+            $(this).addClass("toggleField");
+            $(this).attr("defText", $(this).parent().find("label").text());
+            $(this).hide();
+            $(this).parent().append("<input class='toggleField toggleval fakefield' type='text' name='" + $(this).attr("name") + "' value='" + $(this).parent().find("label").text() + "' />");
+            $(this).parent().find("label").remove();
+        });
+
+
+        $("input.toggleField[type=password]").live("blur", function() {
+            if ($(this).val() == "") {
+                $(this).hide();
+                $(this).parent().find("input[type=text]").show();
+            }
+        });
+
+        $("input.toggleField[type=text]").live("focus", function() {
+            $(this).hide();
+            $(this).parent().find("input[type=password]").show();
+            $(this).parent().find("input[type=password]").focus();
+        });
+
+
+        $("input#booking_first_name, input#booking_last_name, input#booking_email").toggleVal({
+            populateFrom: "label",
+            removeLabels: true
+        });
+
+        $('.bio-text').jTruncate({
+            length: 170,
+            minTrail: 0,
+            moreText: "Read more",
+            lessText: "Hide extra",
+            ellipsisText: "...",
+            moreAni: 0,
+            lessAni: 0
+        });
+    
+
+})
+//]]>
+</script>
+
+
+
+
+
+
+<div id="main">
+
+ <div id="content" role="main">
+
+<!-- begning appt-header -->
+  
+<div id="appt-header">
+
+  <h1>Book an appointment with Dr. ${doctor.user.firstname} ${doctor.user.lastname}</h1>
+
+ 
+<ol class="breadcrumbs">
+<li class="active"><span>1</span> Sign-up / Login</li>
+<li><span>2</span> Confirm Booking
+</li><li class="last"><span><img alt="Finished" height="8" src="./public/images/tick-white.png" width="11"></span> Finished</li></ol>
+
+</div>
+
+<!-- end appt-header -->
+
+<!-- begin doc details -->
+
+<div id="appt-practitioner">
+
+  <div class="vcard">
+    <a href="#" alt="Doctor photo" class="photo"><img alt="Medium" height="160" src="${doctor.docPhoto}" width="120"></img></a>
+    <h4><a href="#">Dr. ${doctor.user.firstname} ${doctor.user.lastname} </a></h4>
+
+    <div class="adr">
+	<p>${doctor.user.insurance}</p>
+	<p class="street-address">${doctor.user.address.streetName}  ${doctor.user.address.streetNumber}</p>
+	<p class="postal-code">${doctor.user.address.zipCode}</p>
+	<p><span  class="locality">${doctor.user.address.city} </span></p>
+    </div>
+ </div>
+
+<div class="bio">
+    <h4>About Dr. ${doctor.user.firstname} ${doctor.user.lastname}</h4>
+
+    <p class="bio-text">Dr. ${doctor.user.firstname} ${doctor.user.lastname} has been providing excellent primary medical care  serviice in ${doctor.user.address.city}. </p>
+    <dl style="margin-top:10px;">
+      <dt>
+      <h5>Accepted Insurance: ${doctor.user.insurance}</h5></dt>
+      <dd></dd>
+    </dl>
+      <h4 style="margin-top:10px;"><a href="#">Back to Appointments</a></h4>
+  </div>
+
+  <div class="appts">
+    <table cellspacing="0" cellpadding="0">
+      <thead>
+      <tr>
+        <th>My Appointment</th>
+        <td></td>
+      </tr>
+      </thead>
+      <tbody>
+      <tr>
+        <th colspan="2">Reason: General Consultation</th>
+      </tr>
+      <tr>
+        <th colspan="2">Date and Time: ${appointmentDate.getTime()}</th>
+      </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <a href="#" class="info">more information</a>
+</div>
+<!-- end doc details -->				
+
+
+	
+<!-- Case when user is logged in -->
+<!-- begin enter -->
+<div id="enter">
+
+<!-- begin login -->	
+	%{
+   		if (session.get("loggedInUser") == null)
+   		{
+     }%
+<div id="login">
+
+<h2>Login to myMedikZeit!</h2>
+<form action="@{Authenticate.doLogin()}" class="formtastic user_session" id="new_user_session" method="post">
+				
+<fieldset class="inputs">
+<ol>
+<li class="string optional" id="user_session_login_input">
+<span class="error">#{error 'email' /}</span>
+					
+<label for="user_session_login">Email Address</label>
+<input id="user_session_login" name="email" size="50" type="text" />
+</li>
+        			
+<li class="password optional" id="user_session_password_input">
+<span class="error">#{error 'password' /}</span>
+<label for="user_session_password">Password</label>
+<input id="user_session_password" name="password" size="50" type="password" />
+</li>
+</ol>
+					
+</fieldset>
+					
+<fieldset class="buttons">
+					
+<ol>        
+<input id="user_session_submit" name="commit" type="submit" value="Login" />
+<a href="@{Authenticate.doRegister() }">Doctors Signup</a>
+</ol>
+</fieldset>
+</form>  
+</div>
+<!-- end login -->
+
+
+
+
+<!-- begin signup -->
+<div id="signup">
+
+    <h2>It's free to sign up</h2>
+
+	<form action="@{Authenticate.doRegister() }" class="formtastic person" id="new_person_booking" method="post">
+	<fieldset class="inputs">
+	<ol>
+
+        <li class="string optional" id="person_first_name_input">
+	<label for="booking_first_name">First name</label>
+	<input autocomplete="off" id="booking_first_name" maxlength="255" name="person[first_name]" size="50" type="text" />
+    	<p class="inline-hints"><font color = "red"> <span class="error">#{error 'user.firstname' /}</span></font></p>
+	</li>
+            
+	<li class="string optional" id="person_last_name_input">
+	<label for="booking_last_name">Last name</label>
+	<input autocomplete="off" id="booking_last_name" maxlength="255" name="person[last_name]" size="50" type="text" />
+	<p class="inline-hints"><font color = "red"> <span class="error">#{error 'user.lastname' /}</span></font></p>
+	</li>
+               
+	<li class="string optional" id="person_user_attributes_email_input">
+	<label for="booking_email">Email (also your username)</label>
+	<input autocomplete="off" id="booking_email" maxlength="100" name="person[user_attributes][email]" size="50" type="text" />
+    	<p class="inline-hints"><font color = "red"> <span class="error">#{error 'user.email' /}</span></font></p>
+	</li>
+
+	<li class="password optional" id="person_user_attributes_password_input">
+	<label for="booking_password">Password</label>
+	<input autocomplete="off" id="booking_password" name="person[user_attributes][password]" size="50" type="password" />
+	<p class="inline-hints"><font color = "red"><span class="error">#{error 'user.password' /}</span></font></p>
+	</li>
+	
+	<fieldset class="buttons">
+	<ol>
+	<input id="person_submit" name="commit" type="submit" value="Set up my account" />
+	</ol>
+	</fieldset>
+	</ol>
+	</fieldset>
+	</form>
+  </div>
+<!-- end signup -->
+
+</div>
+</div>
+</div>
+<!-- end enter -->
+
+
+	%{
+		}
+		else
+		{
+			String email = session.get("loggedInUser");
+			models.User loggedInUser = (models.User) models.User.find("email = ? ", email).fetch().get(0);
+	}%
+			
+<div id="appt-main">
+<h2 class="title">Verify your identity via SMS</h2>
+<div class="message">
+<p>Please confirm your telephone below to continue.</p>
+</div>
+			
+<form action="@{AppointmentBooking.sendPinCode(doctor, appointmentDate)}" class="formtastic user_session" id="sendPinCode" method="post">
+<fieldset class="inputs">
+<ol>
+<li class="string optional" id="telephone_number_value_input">				
+<label for="phoneNumber">Phone Number: </label>
+<input id="phoneNumber" name="phoneNumber" size="50" type="text" value = ${loggedInUser.phoneNumber} />
+<p class="inline-hints">XXX-XXX-XXXX</p>
+</li>
+</ol>
+</fieldset>
+
+<fieldset class="buttons" id="confirm-buttons">
+<ol>
+<li>        			
+<input id="sendPin" name="sendPin" type="submit" value="Confirm by SMS" />
+</li>
+</ol>
+</fieldset>
+				
+</form>
+	%{
+		}
+	}%
+	
+	
+	
+
+	
+</div>	
+</div>

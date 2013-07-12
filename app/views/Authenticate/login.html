@@ -1,0 +1,64 @@
+#{extends 'main.html' /}
+#{set title:'MedikZeit - User Login' /}
+
+ <!-- End navigation area -->  
+ 
+ 
+<!-- Start Main Body -->
+
+<div id="main">
+      <div id="content" role="main">
+  
+				<div id="login-page"><h2>Login to MedikZeit!</h2>
+    				<div id="login"><h3>Login</h3>
+					<form action="@{Authenticate.doLogin()}" class="formtastic user_session" id="new_user_session" method="post">
+				
+					<fieldset class="inputs">
+					<ol>
+					<li class="string optional" id="user_session_login_input">
+					<span class="error">#{error 'email' /}</span>
+					
+					<label for="user_session_login">Email Address</label>
+					<input id="user_session_login" name="email" size="50" type="text" />
+        			</li>
+        			
+        			<li class="password optional" id="user_session_password_input">
+        			<span class="error">#{error 'password' /}</span>
+        			<label for="user_session_password">Password</label>
+        			<input id="user_session_password" name="password" size="50" type="password" />
+        			</li>
+					</ol>
+					
+					</fieldset>
+					
+					<fieldset class="buttons">
+					
+					<ol>        
+					<input id="user_session_submit" name="commit" type="submit" value="Login" />
+        			<a href="@{Authenticate.doRegister() }">Patient Signup</a>
+					</ol>
+					</fieldset>
+					</form>  
+				</div>
+  				
+  				<div id="marketing">
+    				<h2>Not yet registered as a doctor?</h2>
+    				<h3>Sign up today and start</h3>
+    				<ul id="benefits">
+      					<li class="new"><h5>Attracting new patients</h5></li>
+      					<li class="appointments"><h5>Filling open appointments</h5></li>
+      					<li class="happy"><h5>Helping patients stay healthy</h5></li>
+      					
+    				</ul>
+    			
+    				<fieldset class="buttons">
+      				<ol>
+        				<a href="#" id="#">FREE Six Months SIGN UP </a> /  <a href="#" id="#"> Contact Us </a>
+        	
+      				</ol>
+    				</fieldset>
+  				</div>
+			</div>
+
+		</div>
+</div>

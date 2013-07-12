@@ -1,0 +1,79 @@
+#{extends 'main.html' /}
+#{set title:'MedikZeit - New User Sign-up' /}
+
+<div id="user">
+  			<ul>
+  					<li><a href="@{Authenticate.doRegister() }" class="dropdown">Sign-up</a>
+    				
+					</li>
+
+  					<li><a href="@{Authenticate.login() }" class="dropdown">Login</a>
+    				
+					</li>
+			</ul>
+				</div>
+		</div>
+	</div>
+</div>
+
+
+ <!-- End navigation area -->  
+ 
+ 
+<!-- Start Main Body -->
+
+<div id="main">
+      <div id="content" role="main">
+			
+			<div id="search-box">
+				<h1>Choose a Doctor from extensive list of MedikZeit</h1>
+         	</div>
+			
+			<div id="search-results" class="list">
+			#{list items:doctors, as:'doctor'}
+				<ul>
+					<li> 
+						<div class="vcard">
+							<h4> <a href="#"> ${doctor.docPrefix}, ${doctor.userID.firstname} ${doctor.userID.lastname} </a></h4>
+							<a class="photo" alt="" href="#">
+							<img width="90" height="120" src="${doctor.docPhoto}" alt="Small">
+							</img></a>
+							<div class="adr"> 
+								<p class="street-address">${doctor.userID.city}</p>
+								<p> … </p>
+								<p class="postal-code"> … </p> 
+							</div>
+							<div class="meta"> Choose </div>
+							
+						</div>
+						<div class="bio"> <h5>About/Motto Spescialisation</h5><p class="bio-text"> Somthing </p> </div>
+						<div class="appts">
+							<table class="appointments" style="float:left;">
+								<thead>
+									<tr>
+										<th> <strong> Fri.</strong> 06/21/13 </th>
+										<th> <strong> Fri.</strong> 06/21/13 </th>
+										<th> <strong> Fri.</strong> 06/21/13 </th>
+										<th> <strong> Fri.</strong> 06/21/13 </th>
+										<th> <strong> Fri.</strong> 06/21/13 </th>
+										</tr> 
+								</thead>
+								<tbody>
+									<tr>
+										<<td><a rel="nofollow" href="#">02:00PM </a></td>
+										<td> … </td>
+										<td><a rel="nofollow" href="#">02:00PM </a></td>
+										<td><a rel="nofollow" href="#">02:00PM </a></td>
+										<td> … </td>
+									</tr>
+								</tbody>
+							</table>
+						</div>
+					</li>
+				</ul>
+			#{/list}
+			
+			</div>
+		</div>
+	</div>
+    

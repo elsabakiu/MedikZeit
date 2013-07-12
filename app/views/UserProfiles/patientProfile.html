@@ -1,0 +1,146 @@
+#{extends 'main.html' /}
+#{set title:'MedikZeit - Patient Profile' /}   
+
+<script src="@{'/public/javascripts/jquery-1.9.1.js'}" type="text/javascript" charset="${_response_encoding}"></script>
+<script src="@{'/public/javascripts/jquery-ui-1.10.3.custom.js'}" type="text/javascript" charset="${_response_encoding}"></script>
+<script src="@{'/public/javascripts/jquery.tools-1.2.5.toolbox.expose.min.js'}" type="text/javascript" charset="${_response_encoding}"></script>
+<script src="@{'/public/javascripts/jquery.validationEngine-en.js'}" type="text/javascript" charset="${_response_encoding}"></script>
+<script src="@{'/public/javascripts/jquery.validationEngine.js'}" type="text/javascript" charset="${_response_encoding}"></script>
+   				
+<script type="text/javascript">
+
+			jQuery(document).ready(function(){
+
+				// binds form submission and fields to the validation engine
+				jQuery("#doctorData").validationEngine(
+					'attach', 
+					{bindMethod:"live"}
+				);
+				
+				$( "#personalData" ).tabs().addClass( "ui-tabs-vertical ui-helper-clearfix" );
+    			$( "#personalData li" ).removeClass( "ui-corner-top" ).addClass( "ui-corner-left" );
+			});
+ 		
+</script>
+
+<style>
+  .ui-tabs-vertical { width: 55em; }
+  .ui-tabs-vertical .ui-tabs-nav { padding: .2em .1em .2em .2em; float: left; width: 12em; }
+  .ui-tabs-vertical .ui-tabs-nav li { clear: left; width: 100%; border-bottom-width: 1px !important; border-right-width: 0 !important; margin: 0 -1px .2em 0; }
+  .ui-tabs-vertical .ui-tabs-nav li a { display:block; }
+  .ui-tabs-vertical .ui-tabs-nav li.ui-tabs-active { padding-bottom: 0; padding-right: .1em; border-right-width: 1px; border-right-width: 1px; }
+  .ui-tabs-vertical .ui-tabs-panel { padding: 1em; float: right; width: 40em;}
+ </style>
+
+
+<div id="main">
+      <div id="content" role="main">
+    
+  
+  <div id = "tabs" role = "navigation">
+  	<ul>
+  		<li class = "active"> <a href = "@{UserProfiles.patientProfile()}"> Personal information </a> </li>
+  		<li> <a href = "@{Calendar.indexPatient()}"> Calendar </a> </li>
+  	</ul>
+  </div>
+    
+    
+    <br/>
+    <br />
+      
+   <div id = "saveMessage">
+		<label id = "succesfullSaveMessage" style = "visibility:visible; width:300px; height:30px; margin-bottom:10px;">
+		${flash.get("saveMessage")}
+		
+		%{
+			
+			if(session.get("welcomeMessage"))
+			{
+		
+		}%
+		
+			${session.get("welcomeMessage")}
+		%{
+			session.remove("welcomeMessage");
+			}
+		%}
+		
+	</div>
+ 
+  <img width = "100" height = "100" id = "thumb" src = "" />        
+      
+<form id="patientData" action = @{UserProfiles.savePatientPersonalData()} class="formular" method="POST" accept-charset="${_response_encoding}">
+  
+    <h2>Personal Information</h2>
+    <p>
+		<p>
+		<label>First name</label>
+			<input type="text" name="user.firstname" id="user.firstname" value = "${user.firstname}" class="validate[required,maxSize[20]] text-input"/>
+		</p>
+		<p>
+			<label>Last name</label>
+			<input type="text" name="user.lastname" id="user.lastname" value = "${user.lastname}" class="validate[required,maxSize[20]] text-input"/>
+		</p>
+		<p>
+			<label>Gender</label>
+			
+			<input type="radio" name="user.gender" value="true" ${user?.gender ? 'checked' : ''}> Female 
+			<input type="radio" name="user.gender" value="false" ${user?.gender ? '' : 'checked'}">Male
+		</p>
+		
+		<p>
+			<label>Phone Number</label>
+			<input type="text" name="user.phoneNumber" id="user.phoneNumber" value = "${user.phoneNumber}" class="validate[phone,maxSize[20]] text-input"/>
+		</p>
+		
+		<p>
+		<p>
+			<label>Insurance</label>
+			#{select 'user.insurance.id', value:user.insurance?.id}
+				#{option 1} Public Insurance #{/option}
+				#{option 2} Private Insurance #{/option}
+			#{/select}
+    	</p>
+    </p>
+    
+    <h2>Address</h2>
+  	<p>
+		<p>
+			<label>Street Name</label>
+			<input type="text" name="user.address.streetName" id="user.address.streetName" value = "${user.address.streetName}" class="validate[maxSize[50]] text-input"/>
+		</p>
+		<p>
+			<label>Street number</label>
+			<input type="text" name="user.address.streetNumber" id="user.address.streetNumber" value = "${user.address.streetNumber}" class="validate[maxSize[10], onlyNumberSp] text-input"/>
+		</p>
+		<p>
+			<label>City</label>
+			<input type="text" name="user.address.city" id="user.address.city" value = "${user.address.city}" class="validate[required,maxSize[50]] text-input"/>
+		</p>
+		<p>
+			<label>Zip Code</label>
+			<input type="text" name="user.address.zipCode" id="user.address.zipCode" value = "${user.address.zipCode}" class="validate[required,maxSize[50], onlyNumberSp] text-input"/>
+		</p>
+  	</p> 
+
+    
+    <h2>Account Information</h2>
+   			<p>
+				<label>Email</label>
+				<input type="text" name="user.email" id="user.email" value = "${user.email}" class = "validate[email, required,maxSize[20]]"/>
+			</p>
+			<p>
+				<label>Password</label>
+				<input type="password" name="user.password" id="password" value = "${user.password}" class = "validate[required,maxSize[20]] text-input" />
+			</p>
+			<p>
+				<label>Confirm password</label>
+				<input type="password" name="confirmPassword" id="confirmPassword" value = "${user.password}"  class = "validate[maxSize[20], equals[password]] text-input" />
+			</p>	
+
+			<p class="buttons" style = "align : right">
+				<input type="submit" value="Save" class = "submit" id="savePatient" />
+			</p>
+		</form>
+	</div>
+</div>

@@ -1,0 +1,40 @@
+# Routes
+# This file defines all application routes (Higher priority routes first)
+# ~~~~
+
+# Home page
+GET     /                                       Application.index
+GET     /usersignup                             Application.userSignup
+POST    /adduser                                Application.doAddUser
+GET     /signup                                 Authenticate.register
+POST    /signup                                 Authenticate.doRegister
+GET    /signUpDoctor                           Authenticate.registerDoctor
+GET     /login                                  Authenticate.login
+GET     /logout                                 Authenticate.logout
+GET     /profile                                Authenticate.profile
+GET     /mymedikzeit                            Authenticate.myIndex
+GET 	/calendar								Calendar.index
+POST    /listDoctors							Application.listDoctors
+GET     /listDoctors							Application.listDoctors
+GET     /bookAppointment					    AppointmentBooking.bookAppointment
+GET  	/patientProfile							UserProfiles.patientProfile
+GET  	/doctorProfile							UserProfiles.doctorProfile
+POST 	/sendPinCode							AppointmentBooking.sendPinCode
+GET 	/enterPinCode							AppointmentBooking.enterPinCode
+POST	/upload									UserProfiles.upload
+GET		/doctorCalendar							UserProfiles.doctorCalendar
+GET 	/calendarPatient						Calendar.indexPatient
+
+
+# Import CRUD routes
+*      /admin              module:crud
+
+
+# Ignore favicon requests
+GET     /favicon.ico                            404
+
+# Map static resources from the /app/public folder to the /public path
+GET     /public/                                staticDir:public
+
+# Catch all
+*       /{controller}/{action}                  {controller}.{action}

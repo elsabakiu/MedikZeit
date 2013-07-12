@@ -1,0 +1,103 @@
+#{extends 'main.html' /}
+#{set title:'Welcome to MedikZeit - ' /}
+
+
+ <!-- End navigation area -->  
+ 
+ 
+<!-- Start Main Body -->
+
+<div id="main">
+      <div id="content" role="main">
+      	<!-- Start of Steps in Boxes and Filter -->
+  		<div id="steps">
+  			<ol>
+  				<!-- Start Box 01 -->
+      			<li> <h2>Find a doctor</h2>
+          		<img alt="Step_find_doctor" src="./public/images/find_doctor.png" width="195" height="145" />
+          		<p>Easily search through local doctors by speciality and insurance.</p>
+      			</li>
+      			
+      			<!-- Start Box 02 -->
+      			<li>
+          		<h2>Book an appointment</h2>
+          		<img alt="Step_make_an_appt" src="./public/images/make_an_appt.png" width="143" height="143" />
+          		<p>View a doctor’s schedule and book your next appointment - instantly.</p>
+      			</li>
+      			
+      			<!-- Start Box 03 -->
+      			<li>
+          		<h2>Manage your appointments</h2>
+          		<img alt="Step_manage_your_health" src="./public/images/manage_your_appt.jpg" width="158" height="144" />
+          		<p>Conveniently manage your appointments and set reminders.</p>
+      			</li>
+      
+				<!-- Start Filter Box -->
+      			<li id="steps-start">
+    					<h2>Get started</h2>
+						<form action="@{Application.listDoctors() }" class="vertical formtastic search" id="search-form" method="post" name="fileterForm">
+
+						<div style="margin:0;padding:0;display:inline">
+						<input name="authenticity_token" type="hidden" value="NnQWMVTfmJ4m5QBOA2SbBe2nZeScqB5EwWp3n4P7k2c=" />
+						</div>
+						
+						<fieldset class="inputs">
+						<ol>            
+						<li>
+				
+								<strong> Choose Speciallity:</strong> 
+								#{select 'doctorSpecialization'}
+            						#{option 'Dentist'}Dentist #{/option}
+            						#{option 'Dermatologist'} Dermatologist #{/option}
+            						#{option 'Psychiatrist'} Psychiatrist #{/option}
+            						#{option 'Endocrinology'} Endocrinology #{/option}
+            						#{option 'Primary Care Doctor'} Primary Care Doctor #{/option}
+            						#{option 'Orthodontics'} Orthodontics #{/option}
+            						#{option 'All'} All #{/option}
+            						
+        						#{/select}
+            			<li>
+            			
+            			
+      
+      
+            					<strong> Choose Insurance:</strong>
+            					#{select 'insurance'}
+            					     #{option 'Public Insurance'}Public Insurance #{/option}
+            		            	 #{option 'Private Insurance'}Private Insurance #{/option}
+                				#{/select}
+						</li>
+						
+						<li>
+        
+								<strong> Choose a City:</strong>
+								#{select 'city'}
+									#{option 'Munich'}Munich #{/option}
+									#{option 'Hamburg'}Hamburg #{/option}
+									#{option 'Dresden'}Dresden #{/option}
+									#{option 'Düsseldorf'}Düsseldorf #{/option}
+									#{option 'Berlin'}Berlin #{/option}
+									#{option 'Bremen'}Bremen #{/option}
+									#{option 'Stuttgart'}Stuttgart #{/option}
+									#{option 'Hanover'}Hanover #{/option}
+									#{option 'Frankfurt'}Frankfurt #{/option}
+									#{option 'Frankfurt'}Frankfurt #{/option}
+								#{/select}
+            		
+            			</fieldset>
+            		
+            		<fieldset class="buttons">
+						<ol><input id="search_submit" name="commit" type="submit" value="Find appointment" /></ol>
+					</fieldset>
+					</form>
+				</li>
+			</ol>
+		</div>
+		<!-- End of Steps in Boxes and Filter -->
+		
+		
+
+</div>
+</div>
+
+

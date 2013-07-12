@@ -1,0 +1,38 @@
+# You can specialize this file for each language.
+# For example, for French create a messages.fr file
+#
+
+invalid.email=Please type a valid email address!
+no.email=Please type your email address!
+no.password=Please enter a password!
+no.firstname=Please type your First Name!
+no.lastname=Please type your Last Name!
+
+
+
+city = City
+zipCode = Zip Code
+streetName = Street Name
+streetNumber = Street Number
+appointmentTime = Appointment Time
+status = Status
+appointmentType = Appointment reason
+patient = Patient
+doctor = Doctor
+docClinicName = Clinic Name
+docPhoto = Photo
+user = Personal Data
+docSpecialization = Specialization
+specializationName = Specialization
+comment = Comment
+ratingValue = Rating Value
+email = Email
+passwordHash = Password
+firstname = First Name
+lastname = Last Name
+gender = Gender
+phoneNumber = Phone Number
+insurance = Insurance
+userType = User Type
+address = Address
+AppointmentStatus = Appointment Status

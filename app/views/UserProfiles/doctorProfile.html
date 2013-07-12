@@ -1,0 +1,256 @@
+#{extends 'main.html' /}
+#{set title:'MedikZeit - Doctor Profile' /}   
+
+<script src="@{'/public/javascripts/jquery-1.9.1.js'}" type="text/javascript" charset="${_response_encoding}"></script>
+<script src="@{'/public/javascripts/jquery-ui-1.10.3.custom.js'}" type="text/javascript" charset="${_response_encoding}"></script>
+<script src="@{'/public/javascripts/jquery.tools-1.2.5.toolbox.expose.min.js'}" type="text/javascript" charset="${_response_encoding}"></script>
+<script src="@{'/public/javascripts/jquery.validationEngine-en.js'}" type="text/javascript" charset="${_response_encoding}"></script>
+<script src="@{'/public/javascripts/jquery.validationEngine.js'}" type="text/javascript" charset="${_response_encoding}"></script>
+ 
+
+<script type="text/javascript">
+
+			jQuery(document).ready(function(){
+
+				// binds form submission and fields to the validation engine
+				jQuery("#doctorData").validationEngine(
+					'attach', 
+					{bindMethod:"live"}
+				);
+				
+				$( "#personalData" ).tabs().addClass( "ui-tabs-vertical ui-helper-clearfix" );
+    			$( "#personalData li" ).removeClass( "ui-corner-top" ).addClass( "ui-corner-left" );
+			});
+ 		
+</script>
+
+<style>
+  .ui-tabs-vertical { width: 55em; }
+  .ui-tabs-vertical .ui-tabs-nav { padding: .2em .1em .2em .2em; float: left; width: 12em; }
+  .ui-tabs-vertical .ui-tabs-nav li { clear: left; width: 100%; border-bottom-width: 1px !important; border-right-width: 0 !important; margin: 0 -1px .2em 0; }
+  .ui-tabs-vertical .ui-tabs-nav li a { display:block; }
+  .ui-tabs-vertical .ui-tabs-nav li.ui-tabs-active { padding-bottom: 0; padding-right: .1em; border-right-width: 1px; border-right-width: 1px; }
+  .ui-tabs-vertical .ui-tabs-panel { padding: 1em; float: right; width: 40em;}
+ </style>
+
+
+<div id="main">
+      <div id="content" role="main">
+    
+
+
+  <!-- page top Nav -->
+  <div id = "tabs" role = "navigation">
+  	<ul>
+	<li><a href="@{Application.index()}">Home</a></li>
+  	<li class = "active"> <a href = "@{UserProfiles.doctorProfile()}"> My Settings </a> </li>
+  	<li> <a href = "@{Calendar.index()}"> My Calendar </a> </li>
+  	</ul>
+  </div>
+ <!-- end page top Nav -->    
+
+<!-- Left Side Nav -->
+<div id="navigation">
+
+<div id="photo">
+<img width = "130" height = "160" id = "thumb" src = "${doctor.docPhoto}" />        
+</div>
+
+<ul><li class="active"><a href="#1">Personal Details</a></li>
+<li><a href="#2">Personal Address</a></li>
+<li><a href="#3">Account Details</a></li></ul>
+</div>
+<!-- END OF Left Side Nav -->
+
+<!-- Right Side Filio -->
+
+<div id="section">
+
+ <div id = "saveMessage">
+		<label id = "succesfullSaveMessage" style = "visibility:visible; width:300px; height:30px; margin-bottom:10px;">
+		${flash.get("saveMessage")}
+		
+		%{
+			
+			if(session.get("welcomeMessage"))
+			{
+		
+		}%
+		
+			${session.get("welcomeMessage")}
+		%{
+			session.remove("welcomeMessage");
+			}
+		%}	
+	</div>
+	
+	
+<h1 id="1">Personal Details</h1>
+
+<form action="@{UserProfiles.saveDoctorPersonalData()}" class="formtastic practitioner" id="edit_practitioner_15384" method="post" accept-charset="${_response_encoding}">
+<fieldset class="inputs">
+<ol>
+
+<li class="string required" id="practitioner_person_attributes_first_name_input"> 
+<label>First name:<abbr title="required">Required</abbr> </label>
+<input type="text" name="doctor.user.firstname" id="doctor.user.firstname" value = "${doctor.user.firstname}" class="validate[required,maxSize[20]] text-input"/>
+</li>
+
+<li class="string required" id="practitioner_person_attributes_last_name_input">
+<label>Last name</label>
+<input type="text" name="doctor.user.lastname" id="doctor.user.lastname" value = "${doctor.user.lastname}" class="validate[required,maxSize[20]] text-input"/>
+</li>
+
+<li class="select optional" id="practitioner_person_attributes_sex_input">
+<label>Gender</label>
+<input type="radio" name="doctor.user.gender" value="true" ${doctor.user?.gender ? 'checked' : ''}> Female 
+<input type="radio" name="doctor.user.gender" value="false" ${doctor.user?.gender ? '' : 'checked'}"> Male
+
+</li>
+
+<li class="string optional" id="telephone_number_value_input">
+<label>Phone Number</label>
+<input type="text" name="doctor.user.phoneNumber" id="doctor.user.phoneNumber" value = "${doctor.user.phoneNumber}" class="validate[phone,maxSize[20]] text-input"/>
+<p class="inline-hints">XXX-XXX-XXXX</p>
+</li>
+<li class="string optional">
+<label> Photo: </label>			
+			<div id="file-uploader">
+			    <noscript>
+			        <p>Please enable JavaScript to use file uploader.</p>
+			        <!-- or put a simple form for upload here -->
+			    </noscript>
+
+			    <script>
+			    	
+
+			        function createUploader(){
+			            var uploader = new qq.FileUploader({
+			                element: document.getElementById('file-uploader'),
+			                action: '/upload',
+			                debug: true,
+			                onComplete: function(id, fileName, responseJSON){
+			                	$('img#thumb').attr('src', '/public/images/DoctorProfilePhotos/' + fileName);
+			                	$('#docPhoto').val('/public/images/DoctorProfilePhotos/' + fileName);
+			                }
+			            });
+			        }
+			
+			        // in your app create uploader as soon as the DOM is ready
+			        // don't wait for the window to load
+			        window.onload = createUploader;
+			    </script>   
+			</div>
+
+<input type="hidden" name="doctor.docPhoto" id="docPhoto" value = ${doctor.docPhoto}/>
+</li>
+<li class="string optional" id="practitioner_person_attributes_clinic_name_input">
+<label>Clinic Name: </label>
+<input type="text" name="doctor.docClinicName" id="doctor.docClinicName" value = ${doctor.docClinicName} class="validate[maxSize[50]] text-input"/>
+</li>
+</ol>
+
+<li class="string optional" id="telephone_number_value_input">
+<label>Insurance</label>
+#{select 'doctor.user.insurance.id', value:doctor.user.insurance?.id}
+#{option 1} Public Insurance #{/option}
+#{option 2} Private Insurance #{/option}
+#{/select}
+</li>
+
+
+<li class="string optional" id="telephone_number_value_input">
+<label>Specialization</label>
+#{select 'doctor.docSpecialization.id', value:doctor.docSpecialization?.id}
+#{option 1} Dentist #{/option}
+#{option 2} Dermatologist #{/option}
+#{/select}
+</li>
+
+</ol>
+
+</fieldset>
+
+
+
+<!-- end of folio -->
+
+<!-- Right Side Filio -->
+</ br> </ br> </ br>
+<h1 id="2">Personal Address</h1>
+
+
+<fieldset class="inputs">
+<ol>
+
+<li class="string required" id="practitioner_person_attributes_street_name_input">
+<label>Street Name: </label>
+<input type="text" name="doctor.user.address.streetName" id="doctor.user.address.streetName" value = "${doctor.user.address.streetName}" class="validate[maxSize[50]] text-input"/>
+</li>
+
+<li class="string required" id="practitioner_person_attributes_last_street_number">
+<label>Street number: </label>
+<input type="text" name="doctor.user.address.streetNumber" id="doctor.user.address.streetNumber" value = "${doctor.user.address.streetNumber}" class="validate[maxSize[10], onlyNumberSp] text-input"/>
+</li>
+
+
+<li class="string optional" id="practitioner_person_attributes_clinic_city_input">
+<label>City</label>
+<input type="text" name="doctor.user.address.city" id="doctor.user.address.city" value = "${doctor.user.address.city}" class="validate[required,maxSize[50]] text-input"/>
+</li>
+
+<li class="string required" id="practitioner_person_attributes_last_name_input">
+<label>Zip Code</label>
+<input type="text" name="doctor.user.address.zipCode" id="doctor.user.address.zipCode" value = "${doctor.user.address.zipCode}" class="validate[required,maxSize[50], onlyNumberSp] text-input"/>
+</li>
+
+</ol>
+
+</ol>
+
+</fieldset>
+
+
+
+<h1 id="3">Account Details</h1>
+
+
+<fieldset class="inputs">
+<ol>
+
+<li class="string required" id="practitioner_person_attributes_street_name_input">
+<label>Email: </label>
+<input type="text" name="doctor.user.email" id="doctor.user.email" value = "${doctor.user.email}" class = "validate[email, required,maxSize[20]]"/>
+</li>
+
+<li class="string required" id="practitioner_person_attributes_last_name_input" >
+<label>Password</label>
+<input type="password" name="doctor.user.password" id="password" value = "${doctor.user.password}" class = "validate[required,maxSize[20]] text-input" />
+</li>
+
+<li class="string required" id="practitioner_person_attributes_last_name_input">
+<label>Confirm password</label>
+<input type="password" name="confirmPassword" id="confirmPassword" class = "validate[maxSize[20], equals[password]]" value = "${doctor.user.password}"  text-input />
+</li>
+
+</ol>
+
+</fieldset>
+
+<fieldset class="buttons">
+<ol>      
+<input id="practitioner_submit" name="commit" type="submit" value="Save">
+</ol>
+</fieldset>
+
+</form>
+</div>
+<!-- end of folio -->
+      
+
+    
+  
+    
+ 
+</div>
+</div>

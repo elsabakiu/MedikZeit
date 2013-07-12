@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+
+<html>
+    <head>
+        <title>#{get 'title' /}</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=${_response_encoding}"/>        
+        
+		#{stylesheet src:"screen.css" /}
+		#{stylesheet src:"marketing.css" /}
+
+        <link rel="shortcut icon" type="image/png" href="@{'/public/images/favicon.png'}" />
+        #{script src:"application.js" /}
+        #{script src:"default.js" /}
+        
+        
+        <link rel="stylesheet" type="text/css" media = "screen" href="@{'/public/stylesheets/validationEngine.jquery.css'}"/>
+	<link rel="stylesheet" type="text/css" media = "screen" href="@{'/public/stylesheets/css/ui-lightness/jquery-ui-1.10.3.custom.css'}"/>
+	<link rel="stylesheet" type="text/css" media="screen" href="@{'/public/stylesheets/fileuploader.css'}">
+		
+	<script src="@{'/public/javascripts/jquery-1.6.4.min.js'}" type="text/javascript" charset="${_response_encoding}"></script>
+    <script src="@{'/public/javascripts/jquery-ui-1.10.3.custom.js'}" type="text/javascript" charset="${_response_encoding}"></script>
+	<script src="@{'/public/javascripts/jquery.tools-1.2.5.toolbox.expose.min.js'}" type="text/javascript" charset="${_response_encoding}"></script>
+	<script src="@{'/public/javascripts/jquery.validationEngine-en.js'}" type="text/javascript" charset="${_response_encoding}"></script>
+	<script src="@{'/public/javascripts/jquery.validationEngine.js'}" type="text/javascript" charset="${_response_encoding}"></script>
+   	<script src="@{'/public/javascripts/fileuploader.js'}" type="text/javascript" charset="${_response_encoding}"></script>
+   		
+        
+    </head>
+    
+  	 <!-- Start main --> 
+<body id="page-dashboard">
+   
+    <div id="masthead" role="banner">
+      <div id="header">  
+      <h1 id="logo"><a href="@{Application.index()}">MedikZeit</a></h1>
+  	   <!-- Start navigation area -->
+  		<div id="menu">
+  		 
+  		 <!-- Start navigation -->
+  			<ul>
+				<li><a href="@{Application.index() }" class="dropdown"><span>Home</span></a></li>
+				 %{
+			   		if (session.get("loggedInUser") != null)
+			   		{
+			     }%
+    				<li> <a href="@{Authenticate.profile()}" class="dropdown"> My MedikZeit </a> </li>
+				%{
+					}
+				}%
+				
+				<li><a href="#" class="dropdown"><span>Features</span></a>
+				<div class="submenu one-col">
+				<div class="left"> <h4>Features and Specialties</h4>
+				<div class="col-wrapper">
+				<div class="col first">
+					<ul class="links">
+            			<li><a href="features/find.html">Find Doctors</a></li>
+            			<li><a href="features/choose.html">Choose Doctors</a></li>
+            			<li><a href="features/book.html">Book Appointments</a></li>
+            			<li><a href="features/manage.html">Manage Appointments</a></li>
+          			</ul>
+        		</div>
+      			</div>
+    			</div>
+  				</div>
+				</li>
+				
+				<li><a href="#" class="dropdown"><span>Plans and Pricing</span></a></li>
+				
+				<li><a href="#" class="dropdown"><span>Medics</span></a>
+				<div class="submenu one-col">
+				<div class="left"> <h4>List Medics by Specialities </h4>
+				<div class="col-wrapper">
+				<div class="col first">
+					<ul class="links">
+						<li><a href="searches/listDentists.html">Dentists</a></li>
+            			<li><a href="searches/listDermatologists.html">Dermatologists</a></li>
+            			<li><a href="searches/listGynecologists.html">Gynecologists</a></li>
+            			<li><a href="searches/listPsychiatrist.html">Psychiatrist</a></li>
+            			<li><a href="searches/listOrthodontics.html">Orthodontics</a></li>
+            			<li><a href="searches/listAll.html">All Medics</a></li>
+          			</ul>
+        		</div>
+      			</div>
+    			</div>
+  				</div>
+				</li>
+				
+				<li><a href="#" class="dropdown"><span>About Us</span></a></li>
+			
+          	</ul>
+          	
+			<div id="user">
+			  			<ul>
+			  					<li><a href="@{Authenticate.doRegister() }" class="dropdown">Sign-up</a>
+			    				
+								</li>
+			
+			  					<li> 
+								    %{
+								   		if (session.get("loggedInUser") != null)
+								   		{
+								     }%
+								    	<a href="@{Authenticate.logout()}"> Logout </a>
+									%{
+										}
+										else
+										{
+									%}
+										<a href="@{Authenticate.login()}"> Login </a>
+								    %{
+								    	}
+								    }%
+								</li>
+						</ul>
+					</div>
+					</div>
+				</div>
+			</div>
+    <!-- End navigation -->
+  		
+ <!-- End navigation area -->  
+ 		</div>
+ 
+<!-- Start Main Body -->
+    
+    
+
+      
+ 		#{doLayout /}     	
+      	
+
+	</div>
+    
+<!-- °°°°°°°° -->
+<div id="addendum">
+      
+<div id="footer" role="contentinfo">
+  <dl>
+    <dt>MedikZeit!</dt>
+    <dd><a href="aboutus.html">About Us</a></dd>
+    <dd><a href="careers.html">Careers</a></dd>
+    <dd><a href="contacts.html">Contacts</a></dd>
+  </dl>
+  <dl>
+    <dt>For Patients</dt>
+    <dd><a href="@{Authenticate.doRegister() }">Sign-up</a></dd>
+    <dd>
+    
+    %{
+   		if (session.get("loggedInUser") != null)
+   		{
+     }%
+    	<a href="@{Authenticate.profile()}"> My MedikZeit </a>
+	%{
+		}
+		else
+		{
+	%}
+		<a href="@{Authenticate.login()}"> Login </a>
+    %{
+    	}
+    }%
+    </dd>
+    <dd><a href="#"">Doctor Reviews</a></dd>
+  </dl>
+  <dl>
+    <dt>For Doctors</dt>
+    <dd><a href="membership.html">Membership</a></dd>
+    <dd><a href="membership/features.html">Features</a></dd>
+    <dd><a href="membership/plans.html">Plans &amp; Pricing</a></dd>
+  </dl>
+  <dl id="footer-legal">
+    <dt>Legal</dt>
+    <dd><a href="legal/terms.html">Terms of Use</a></dd>
+    <dd><a href="legal/privacy.html">Privacy Policy</a></dd>
+    <dd id="copyright">&copy; 2013 MedikZeit!</dd>
+  </dl>
+  <dl id="footer-contact">
+    <dt>Stay Networked</dt>
+    <dd><a href="http://twitter.com/MedikZeit" id="tw-link">Follow Us</a></dd>
+    <dd><a href="http://www.facebook.com/MedikZeit" id="fb-link">Like Us</a></dd>
+    <dd><a href="https://plus.google.com/u/0/+/MedikZeit" id="gp-link">Follow Us</a></dd>
+  </dl>
+</div>
+
+</div>
+
+</body>
+
+</html>

@@ -1,0 +1,1614 @@
+@charset "UTF-8";
+/* Variables
+----------------------------------------*/
+/* basic 960px grid */
+/* colors */
+/* v for vitals iframe */
+/* typography */
+/* Imports
+----------------------------------------*/
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, font, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  outline: 0;
+  font-weight: inherit;
+  font-style: inherit;
+  font-size: 100%;
+  font-family: inherit;
+  vertical-align: baseline;
+}
+
+body {
+  line-height: 1;
+  color: black;
+  background: white;
+}
+
+ol, ul {
+  list-style: none;
+}
+
+table {
+  border-collapse: separate;
+  border-spacing: 0;
+  vertical-align: middle;
+}
+
+caption, th, td {
+  text-align: left;
+  font-weight: normal;
+  vertical-align: middle;
+}
+
+q, blockquote {
+  quotes: "" "";
+}
+q:before, q:after, blockquote:before, blockquote:after {
+  content: "";
+}
+
+a img {
+  border: none;
+}
+
+/* Custom mixins
+----------------------------------------*/
+/* boxes */
+/* forms */
+/* auxiliary */
+/* missing CSS3 mixins */
+/* entities */
+/* Generic
+----------------------------------------*/
+body {
+  font: 12px "Helvetica Neue", Helvetica, Arial, sans-serif;
+  background-color: #fff;
+  color: #464646;
+}
+
+table, button, input, textarea, select, option {
+  font: 12px "Helvetica Neue", Helvetica, Arial, sans-serif;
+}
+
+input[type="submit"], input[type="checkbox"], input[type="radio"], label, select {
+  cursor: pointer;
+}
+
+a {
+  color: #00aeef;
+  text-decoration: none;
+}
+a:hover {
+  text-decoration: underline;
+}
+
+h1, h2, h3 {
+  line-height: 1;
+  margin-bottom: 20px;
+  font-weight: bold;
+}
+
+h1 {
+  font-size: 24px;
+}
+
+h2 {
+  font-size: 23px;
+}
+h2 a {
+  color: #38c6fc;
+}
+
+h3 {
+  font-size: 18px;
+}
+
+h4 {
+  font-weight: bold;
+  font-size: 15px;
+  margin-bottom: 10px;
+}
+
+h5 {
+  font-weight: bold;
+  font-size: 13px;
+}
+
+h6 {
+  font-weight: bold;
+  font-size: 12px;
+}
+
+input[type="text"], input[type="password"], textarea {
+  -moz-border-radius: 19px;
+  -webkit-border-radius: 19px;
+  -o-border-radius: 19px;
+  -ms-border-radius: 19px;
+  -khtml-border-radius: 19px;
+  border-radius: 19px;
+  -moz-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.3);
+  -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.3);
+  -o-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.3);
+  box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.3);
+  color: #555555;
+  background: #fff;
+  border: 1px solid #e1e1e1;
+  padding: 3px 10px;
+}
+
+input[type="checkbox"] {
+  vertical-align: middle;
+}
+
+textarea {
+  -moz-border-radius: 6px;
+  -webkit-border-radius: 6px;
+  -o-border-radius: 6px;
+  -ms-border-radius: 6px;
+  -khtml-border-radius: 6px;
+  border-radius: 6px;
+  padding: 3px 5px;
+}
+
+form.button-to, form.button-to > div {
+  display: inline;
+}
+
+/* Layout
+----------------------------------------*/
+#header {
+  *zoom: 1;
+  min-width: 940px;
+  width: 940px;
+  max-width: 1020px;
+  margin: 0 auto;
+  position: relative;
+  padding: 20px 0;
+}
+#header:after {
+  content: "\0020";
+  display: block;
+  height: 0;
+  clear: both;
+  overflow: hidden;
+  visibility: hidden;
+}
+#header h1, #header #logo {
+  display: inline;
+  float: left;
+  text-indent: -119988px;
+  overflow: hidden;
+  text-align: left;
+  background-image: url('../images/logo.png');
+  background-repeat: no-repeat;
+  background-position: 0 0;
+  width: 205px;
+  height: 40px;
+  margin-bottom: 0;
+}
+#header h1 a, #header #logo a {
+  display: block;
+  width: 205px;
+  height: 40px;
+}
+#header .phone-help {
+  position: absolute;
+  right: 12px;
+  top: 15px;
+}
+#header #user {
+  display: inline;
+  float: right;
+  text-align: right;
+  z-index: 999;
+  margin-top: 5px;
+}
+#header #user ul {
+  list-style-type: none;
+}
+#header #user ul, #header #user ul li {
+  margin: 0px;
+  padding: 0px;
+  display: inline;
+}
+#header #user li {
+  position: relative;
+}
+#header #user li a.dropdown {
+  -moz-border-radius-topleft: 6px;
+  -webkit-border-top-left-radius: 6px;
+  -o-border-top-left-radius: 6px;
+  -ms-border-top-left-radius: 6px;
+  -khtml-border-top-left-radius: 6px;
+  border-top-left-radius: 6px;
+  -moz-border-radius-topright: 6px;
+  -webkit-border-top-right-radius: 6px;
+  -o-border-top-right-radius: 6px;
+  -ms-border-top-right-radius: 6px;
+  -khtml-border-top-right-radius: 6px;
+  border-top-right-radius: 6px;
+  font-weight: bold;
+  padding: 5px 10px;
+  position: relative;
+  z-index: 101;
+}
+#header #user li a.dropdown span {
+  padding-right: 12px;
+  background: url('../images/arrow-menuNot.png') no-repeat 100% 7px;
+}
+#header #user li:hover .submenu {
+  display: block;
+}
+#header #user li:hover a.dropdown {
+  text-decoration: none;
+  padding: 4px 9px 5px;
+  border: 1px solid #cdf1ff;
+  border-bottom: none;
+  background: #fff;
+  background-position: 99% 9px;
+}
+#header #user .submenu {
+  -moz-box-shadow: 3px 2px 3px rgba(0, 0, 0, 0.2);
+  -webkit-box-shadow: 3px 2px 3px rgba(0, 0, 0, 0.2);
+  -o-box-shadow: 3px 2px 3px rgba(0, 0, 0, 0.2);
+  box-shadow: 3px 2px 3px rgba(0, 0, 0, 0.2);
+  -moz-border-radius-bottomleft: 6px;
+  -webkit-border-bottom-left-radius: 6px;
+  -o-border-bottom-left-radius: 6px;
+  -ms-border-bottom-left-radius: 6px;
+  -khtml-border-bottom-left-radius: 6px;
+  border-bottom-left-radius: 6px;
+  -moz-border-radius-bottomright: 6px;
+  -webkit-border-bottom-right-radius: 6px;
+  -o-border-bottom-right-radius: 6px;
+  -ms-border-bottom-right-radius: 6px;
+  -khtml-border-bottom-right-radius: 6px;
+  border-bottom-right-radius: 6px;
+  position: absolute;
+  top: 18px;
+  padding: 5px 10px;
+  width: 150px;
+  display: none;
+  z-index: 100;
+  background: #fff;
+  border: 1px solid #cdf1ff;
+  overflow: hidden;
+  text-align: left;
+}
+#header #user ul li {
+  display: -moz-inline-box;
+  -moz-box-orient: vertical;
+  display: inline-block;
+  vertical-align: middle;
+  *vertical-align: auto;
+}
+#header #user ul li {
+  *display: inline;
+}
+#header #user ul li abbr[title="required"] {
+  display: none;
+}
+#header #user form li {
+  display: block;
+  margin-bottom: 15px;
+}
+#header #user form li label {
+  display: block;
+  margin-bottom: 15px;
+}
+#header #user form li .inline label {
+  display: inline;
+}
+#header #user form li p.inline-hints {
+  padding: 2px 0 2px 15px;
+  background: url('../images/10_info.png') no-repeat left center;
+  font-size: 12px;
+  color: #999;
+  margin: 5px 0 0 0;
+  line-height: 1.5em;
+  background-position: 0 7px;
+}
+#header #user form li p.inline-hints a {
+  text-decoration: none;
+  border-bottom: 1px dotted #00aeef;
+}
+#header #user form li p.inline-hints a:hover {
+  border-bottom: none;
+}
+#header #user form li abbr {
+  -moz-border-radius: 2px;
+  -webkit-border-radius: 2px;
+  -o-border-radius: 2px;
+  -ms-border-radius: 2px;
+  -khtml-border-radius: 2px;
+  border-radius: 2px;
+  background: #fdf9b6;
+  padding: 1px 2px 2px;
+  font-size: 9px;
+  font-weight: bold;
+  color: #666;
+  text-transform: uppercase;
+  margin-left: 10px;
+}
+#header #user a {
+  color: #ef802a;
+}
+#header #user li.static:hover a, #header #user li.static.active a {
+  -moz-border-radius: 4px;
+  -webkit-border-radius: 4px;
+  -o-border-radius: 4px;
+  -ms-border-radius: 4px;
+  -khtml-border-radius: 4px;
+  border-radius: 4px;
+  border: 1px solid #CDF1FF;
+}
+#header #user li.static.active:hover a {
+  padding: 5px 10px;
+}
+#header #user li.static a {
+  color: #00aeef;
+}
+#header #user .submenu {
+  display: inline;
+  float: left;
+  margin-right: 20px;
+  width: 300px;
+  width: 268px;
+  padding: 15px;
+  margin-right: 0;
+  -moz-box-shadow: -3px 2px 3px rgba(0, 0, 0, 0.2);
+  -webkit-box-shadow: -3px 2px 3px rgba(0, 0, 0, 0.2);
+  -o-box-shadow: -3px 2px 3px rgba(0, 0, 0, 0.2);
+  box-shadow: -3px 2px 3px rgba(0, 0, 0, 0.2);
+  display: none;
+  top: 19px;
+  right: 0;
+}
+* html #header #user .submenu {
+  overflow-x: hidden;
+}
+#header #user .submenu legend {
+  font-weight: bold;
+  padding-bottom: 10px;
+}
+#header #user .submenu input[type="text"], #header #user .submenu input[type="password"] {
+  width: 240px;
+}
+#header #user .submenu input[type="submit"] {
+  -moz-box-shadow: 0 1px 1px rgba(0, 0, 0, 0.08);
+  -webkit-box-shadow: 0 1px 1px rgba(0, 0, 0, 0.08);
+  -o-box-shadow: 0 1px 1px rgba(0, 0, 0, 0.08);
+  box-shadow: 0 1px 1px rgba(0, 0, 0, 0.08);
+  border: 1px solid #ccc;
+  background: #eee;
+  font-weight: bold;
+  -moz-border-radius: 19px;
+  -webkit-border-radius: 19px;
+  -o-border-radius: 19px;
+  -ms-border-radius: 19px;
+  -khtml-border-radius: 19px;
+  border-radius: 19px;
+  font: bold 12px "Helvetica Neue", Helvetica, Arial, sans-serif;
+  padding: 2px 15px;
+  /* will need a gecko-only fix for inconsistent padding */
+  text-shadow: 0 -1px 0 #858f35;
+  background: #feb87a url('../images/button-orange.png') repeat-x center center;
+  color: #fff;
+  border-color: #f1ad85;
+}
+#header #user .submenu input[type="submit"][disabled="disabled"] {
+  opacity: 0.4;
+}
+* + html #header #user .submenu input[type="submit"] {
+  overflow: visible;
+}
+#header #user .submenu a {
+  border: none !important;
+}
+#header #user .submenu li#person_first_name_input, #header #user .submenu li#person_last_name_input {
+  float: left;
+  width: 130px !important;
+  overflow: hidden;
+}
+#header #user .submenu li#person_first_name_input input[type="text"], #header #user .submenu li#person_last_name_input input[type="text"] {
+  width: 105px !important;
+}
+#header #user .submenu li#person_user_attributes_email_input {
+  clear: both !important;
+}
+#header #user .submenu .buttons li {
+  margin-bottom: 0;
+  padding-bottom: 0;
+  border-bottom: 0;
+}
+#header #user .submenu .buttons li a {
+  text-decoration: none;
+  border-bottom: 1px dotted #ef802a;
+  padding: 0;
+  border-width: 0 0 1px 0;
+  margin-left: 10px;
+}
+#header #user .submenu .buttons li a:hover {
+  border-bottom: none;
+}
+
+#main {
+  overflow: hidden;
+  *zoom: 1;
+  -moz-box-shadow: inset 0 3px 10px rgba(0, 0, 0, 0.3);
+  -webkit-box-shadow: inset 0 3px 10px rgba(0, 0, 0, 0.3);
+  -o-box-shadow: inset 0 3px 10px rgba(0, 0, 0, 0.3);
+  box-shadow: inset 0 3px 10px rgba(0, 0, 0, 0.3);
+  background: #6AFB92 url('../images/bg.jpg') repeat-x;
+}
+#main #content {
+  width: 940px;
+  margin: 0 auto;
+  overflow: hidden;
+  *zoom: 1;
+  *zoom: 1;
+  margin-top: 20px;
+  margin-bottom: 40px;
+  position: relative;
+  overflow: visible;
+}
+#main #content:after {
+  content: "\0020";
+  display: block;
+  height: 0;
+  clear: both;
+  overflow: hidden;
+  visibility: hidden;
+}
+
+#addendum {
+  background: #fff;
+  padding: 20px 0;
+}
+#addendum #endorsements {
+  width: 940px;
+  margin: 0 auto;
+  overflow: hidden;
+  *zoom: 1;
+  *zoom: 1;
+  border-bottom: 1px solid #e5e5e5;
+  padding-bottom: 20px;
+  margin-bottom: 20px;
+  overflow: visible;
+}
+#addendum #endorsements:after {
+  content: "\0020";
+  display: block;
+  height: 0;
+  clear: both;
+  overflow: hidden;
+  visibility: hidden;
+}
+#addendum #endorsements #logos {
+  overflow: hidden;
+  *zoom: 1;
+  display: inline;
+  float: left;
+  margin-right: 20px;
+  width: 620px;
+}
+* html #addendum #endorsements #logos {
+  overflow-x: hidden;
+}
+#addendum #endorsements #logos ul {
+  overflow: hidden;
+  *zoom: 1;
+}
+#addendum #endorsements #logos li {
+  display: inline;
+  float: left;
+  margin-right: 20px;
+  width: 140px;
+}
+* html #addendum #endorsements #logos li {
+  overflow-x: hidden;
+}
+#addendum #endorsements #logos li a {
+  overflow: hidden;
+  display: block;
+}
+#addendum #endorsements #logos li img#ft {
+  height: 40px;
+}
+#addendum #endorsements #logos li img#cartier {
+  height: 60px;
+}
+#addendum #endorsements #logos li img#tnw {
+  width: 140px;
+  margin-top: 10px;
+}
+#addendum #endorsements #logos li img#kmd {
+  width: 140px;
+  margin-top: 10px;
+}
+#addendum #endorsements #logos li:last-child {
+  margin-right: 0;
+}
+#addendum #endorsements #logos li.last {
+  margin-right: 0;
+}
+#addendum #endorsements #testimonial {
+  display: inline;
+  float: left;
+  margin-right: 20px;
+  width: 300px;
+  margin-right: 0;
+}
+* html #addendum #endorsements #testimonial {
+  overflow-x: hidden;
+}
+#addendum #endorsements #testimonial blockquote {
+  font-size: 15px;
+}
+#addendum #endorsements #testimonial blockquote p {
+  position: relative;
+  font-weight: bold;
+}
+#addendum #endorsements #testimonial blockquote p:before {
+  content: "\201C";
+  font-size: 42px;
+  float: left;
+  margin: -10px 5px 0 0;
+}
+#addendum #endorsements #testimonial blockquote p:after {
+  content: "\201E";
+  font-size: 42px;
+  position: absolute;
+  bottom: 0;
+  right: 0;
+}
+#addendum #endorsements #testimonial .source {
+  margin: 5px 0 0 25px;
+}
+#addendum #footer {
+  width: 940px;
+  margin: 0 auto;
+  overflow: hidden;
+  *zoom: 1;
+  clear: both;
+}
+#addendum #footer dl {
+  display: inline;
+  float: left;
+  margin-right: 20px;
+  width: 140px;
+}
+* html #addendum #footer dl {
+  overflow-x: hidden;
+}
+#addendum #footer dl dt {
+  font-weight: bold;
+  margin-bottom: 5px;
+}
+#addendum #footer dl dd {
+  line-height: 1.7em;
+}
+#addendum #footer dl#footer-legal {
+  padding-left: 160px;
+}
+#addendum #footer dl#footer-contact {
+  margin-right: 0;
+}
+#addendum #footer dl #tw-link {
+  padding: 2px 0 2px 20px;
+  background: url('../images/16_twitter.png') no-repeat left center;
+}
+#addendum #footer dl #fb-link {
+  padding: 2px 0 2px 20px;
+  background: url('../images/16_facebook.png') no-repeat left center;
+}
+
+/* Frontpage
+----------------------------------------*/
+#intro {
+  margin-top: 60px;
+  position: relative;
+}
+#intro h1 {
+  text-shadow: white 0 1px 0;
+  color: #666;
+  font-size: 32px;
+  line-height: 1.2em;
+}
+#intro h2 {
+  text-shadow: white 0 1px 0;
+  font-size: 18px;
+  line-height: 1.3em;
+  color: #999;
+}
+#intro h2 a {
+  text-decoration: none;
+  border-bottom: 1px dotted #00aeef;
+}
+#intro h2 a:hover {
+  border-bottom: none;
+}
+#intro #pitch {
+  display: inline;
+  float: left;
+  margin-right: 20px;
+  width: 540px;
+  width: 540px;
+  padding: 0;
+  float: none;
+  display: block;
+}
+* html #intro #pitch {
+  overflow-x: hidden;
+}
+#intro #screenshots {
+  display: inline;
+  float: left;
+  margin-right: 20px;
+  width: 380px;
+  width: 380px;
+  padding: 0;
+  margin-right: 0;
+  float: none;
+  position: absolute;
+  bottom: 20px;
+  right: 20px;
+}
+* html #intro #screenshots {
+  overflow-x: hidden;
+}
+#intro #screenshots img {
+  padding: 8px;
+  background: #fff;
+  border: 1px solid #ddd;
+}
+#intro #screenshots .small {
+  position: absolute;
+  top: 125px;
+  right: 0;
+  z-index: 0;
+}
+#intro #screenshots .big {
+  -moz-box-shadow: 3px 0 3px rgba(0, 0, 0, 0.2);
+  -webkit-box-shadow: 3px 0 3px rgba(0, 0, 0, 0.2);
+  -o-box-shadow: 3px 0 3px rgba(0, 0, 0, 0.2);
+  box-shadow: 3px 0 3px rgba(0, 0, 0, 0.2);
+  display: block;
+  width: 300px;
+  height: 250px;
+  position: relative;
+  z-index: 1;
+}
+#intro #actions {
+  -moz-border-radius: 4px;
+  -webkit-border-radius: 4px;
+  -o-border-radius: 4px;
+  -ms-border-radius: 4px;
+  -khtml-border-radius: 4px;
+  border-radius: 4px;
+  padding: 10px;
+  background: #f1efdc;
+  background: rgba(0, 0, 0, 0.05);
+  border-top: 1px solid #e2deb8;
+  border-top: 1px solid rgba(0, 0, 0, 0.1);
+  font-size: 15px;
+  color: #999;
+  padding: 20px;
+  clear: both;
+}
+#intro #actions input {
+  -moz-box-shadow: 0 1px 1px rgba(0, 0, 0, 0.08);
+  -webkit-box-shadow: 0 1px 1px rgba(0, 0, 0, 0.08);
+  -o-box-shadow: 0 1px 1px rgba(0, 0, 0, 0.08);
+  box-shadow: 0 1px 1px rgba(0, 0, 0, 0.08);
+  border: 1px solid #ccc;
+  background: #eee;
+  font-weight: bold;
+  -moz-border-radius: 32px;
+  -webkit-border-radius: 32px;
+  -o-border-radius: 32px;
+  -ms-border-radius: 32px;
+  -khtml-border-radius: 32px;
+  border-radius: 32px;
+  font: bold 15px "Helvetica Neue", Helvetica, Arial, sans-serif;
+  padding: 8px 20px;
+  /* will need a gecko-only fix for inconsistent padding */
+  text-shadow: 0 -1px 0 #858f35;
+  background: #feb87a url('../images/button-orange.png') repeat-x center center;
+  color: #fff;
+  border-color: #f1ad85;
+  vertical-align: middle;
+}
+#intro #actions input[disabled="disabled"] {
+  opacity: 0.4;
+}
+* + html #intro #actions input {
+  overflow: visible;
+}
+#intro #actions a {
+  color: #ef802a;
+  text-decoration: none;
+  border-bottom: 1px dotted #ef802a;
+}
+#intro #actions a:hover {
+  border-bottom: none;
+}
+#intro.tour {
+  margin-bottom: 40px;
+}
+
+#features {
+  overflow: hidden;
+  *zoom: 1;
+  margin: 40px 0;
+}
+#features > div {
+  -moz-border-radius: 10px;
+  -webkit-border-radius: 10px;
+  -o-border-radius: 10px;
+  -ms-border-radius: 10px;
+  -khtml-border-radius: 10px;
+  border-radius: 10px;
+  -moz-box-shadow: inset 0 0 5px rgba(0, 0, 0, 0.3);
+  -webkit-box-shadow: inset 0 0 5px rgba(0, 0, 0, 0.3);
+  -o-box-shadow: inset 0 0 5px rgba(0, 0, 0, 0.3);
+  box-shadow: inset 0 0 5px rgba(0, 0, 0, 0.3);
+  background: #fff;
+  display: inline;
+  float: left;
+  margin-right: 20px;
+  width: 220px;
+  width: 180px;
+  padding: 20px;
+  min-height: 180px;
+  height: auto !important;
+  height: 180px;
+}
+* html #features > div {
+  overflow-x: hidden;
+}
+#features > div h3 {
+  min-height: 2em;
+  height: auto !important;
+  height: 2em;
+  color: #00aeef;
+}
+#features > div p {
+  font-size: 15px;
+}
+#features > div:last-child {
+  margin-right: 0;
+}
+#features > div.last {
+  margin-right: 0;
+}
+
+#quotes {
+  display: inline;
+  float: left;
+  margin-right: 20px;
+  width: 700px;
+  width: 700px;
+  padding: 0;
+}
+* html #quotes {
+  overflow-x: hidden;
+}
+#quotes h4 {
+  color: #ef802a;
+  text-shadow: 0 1px 0 white;
+  margin-bottom: 20px;
+}
+#quotes dl {
+  display: inline;
+  float: left;
+  width: 50%;
+}
+#quotes dl dt {
+  display: inline;
+  float: left;
+  /* clear: both; */
+  margin-right: 20px;
+  margin-bottom: 20px;
+}
+#quotes dl dd {
+  display: inline;
+  float: left;
+  -moz-box-shadow: inset 0 0 3px rgba(0, 0, 0, 0.3);
+  -webkit-box-shadow: inset 0 0 3px rgba(0, 0, 0, 0.3);
+  -o-box-shadow: inset 0 0 3px rgba(0, 0, 0, 0.3);
+  box-shadow: inset 0 0 3px rgba(0, 0, 0, 0.3);
+  -moz-border-radius: 4px;
+  -webkit-border-radius: 4px;
+  -o-border-radius: 4px;
+  -ms-border-radius: 4px;
+  -khtml-border-radius: 4px;
+  border-radius: 4px;
+  width: 238px;
+  padding: 10px;
+  background: #fefce8;
+  position: relative;
+  z-index: 2;
+  margin-bottom: 20px;
+}
+#quotes dl dd:before {
+  text-shadow: -1px 0 0 #cccccc;
+  content: "◆";
+  display: block;
+  z-index: 1;
+  position: absolute;
+  top: 20px;
+  left: -8px;
+  font-size: 24px;
+  color: #fefce8;
+}
+#quotes dl dd blockquote {
+  line-height: 1.5em;
+}
+#quotes dl dd p.source {
+  margin-top: 10px;
+  font-style: italic;
+  color: #999;
+}
+#quotes dl dd p.source:before {
+  content: "— ";
+}
+#quotes dl.last {
+  display: inline;
+  float: right;
+}
+#quotes dl.last dt {
+  float: right;
+  margin: 0 0 0 20px;
+}
+#quotes dl.last dd {
+  margin-left: 10px;
+}
+#quotes dl.last dd:before {
+  content: "";
+}
+#quotes dl.last dd:after {
+  text-shadow: 1px 0 0 #cccccc;
+  content: "◆";
+  display: block;
+  z-index: 1;
+  position: absolute;
+  top: 20px;
+  right: -9px;
+  font-size: 24px;
+  color: #fefce8;
+  text-shadow: 1px 0 0 #ccc;
+}
+
+#secondary-actions {
+  display: inline;
+  float: left;
+  margin-right: 20px;
+  width: 220px;
+  width: 220px;
+  padding: 0;
+  margin-right: 0;
+}
+* html #secondary-actions {
+  overflow-x: hidden;
+}
+#secondary-actions h4 {
+  color: #ef802a;
+  text-shadow: 0 1px 0 white;
+  margin-bottom: 20px;
+}
+#secondary-actions input {
+  -moz-box-shadow: 0 1px 1px rgba(0, 0, 0, 0.08);
+  -webkit-box-shadow: 0 1px 1px rgba(0, 0, 0, 0.08);
+  -o-box-shadow: 0 1px 1px rgba(0, 0, 0, 0.08);
+  box-shadow: 0 1px 1px rgba(0, 0, 0, 0.08);
+  border: 1px solid #ccc;
+  background: #eee;
+  font-weight: bold;
+  -moz-border-radius: 32px;
+  -webkit-border-radius: 32px;
+  -o-border-radius: 32px;
+  -ms-border-radius: 32px;
+  -khtml-border-radius: 32px;
+  border-radius: 32px;
+  font: bold 15px "Helvetica Neue", Helvetica, Arial, sans-serif;
+  padding: 8px 20px;
+  /* will need a gecko-only fix for inconsistent padding */
+  text-shadow: 0 -1px 0 white;
+  background: #d8efef url('../images/button-paleblue.png') repeat-x center center;
+  color: #555555;
+  border-color: #a6e1f6;
+  display: block;
+  margin: 0 auto;
+  width: 215px;
+}
+#secondary-actions input[disabled="disabled"] {
+  opacity: 0.4;
+}
+* + html #secondary-actions input {
+  overflow: visible;
+}
+#secondary-actions .separator {
+  margin: 20px 0;
+  border-top: 1px solid rgba(0, 0, 0, 0.1);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.8);
+  position: relative;
+}
+#secondary-actions .separator span {
+  color: #999;
+  font-size: 15px;
+  background: #FFFCBD;
+  position: absolute;
+  top: -10px;
+  left: 50%;
+  padding: 0 8px;
+  margin-left: -15px;
+  line-height: 1;
+}
+#secondary-actions p {
+  font-size: 15px;
+  text-align: center;
+  margin-top: 40px;
+  color: #999;
+}
+#secondary-actions p strong {
+  -moz-border-radius: 4px;
+  -webkit-border-radius: 4px;
+  -o-border-radius: 4px;
+  -ms-border-radius: 4px;
+  -khtml-border-radius: 4px;
+  border-radius: 4px;
+  -moz-border-radius: 4px;
+  -webkit-border-radius: 4px;
+  -o-border-radius: 4px;
+  -ms-border-radius: 4px;
+  -khtml-border-radius: 4px;
+  border-radius: 4px;
+  padding: 10px;
+  background: #f1efdc;
+  background: rgba(0, 0, 0, 0.05);
+  border-top: 1px solid #e2deb8;
+  border-top: 1px solid rgba(0, 0, 0, 0.1);
+  display: block;
+  margin: 5px 0;
+  font-size: 24px;
+  color: #555555;
+}
+#secondary-actions p a {
+  text-decoration: none;
+  border-bottom: 1px dotted #00aeef;
+}
+#secondary-actions p a:hover {
+  border-bottom: none;
+}
+
+/* Features
+----------------------------------------*/
+#feature-list h3 {
+  color: #555555;
+}
+#feature-list ul {
+  *zoom: 1;
+  margin-bottom: 40px;
+}
+#feature-list ul:after {
+  content: "\0020";
+  display: block;
+  height: 0;
+  clear: both;
+  overflow: hidden;
+  visibility: hidden;
+}
+#feature-list ul li {
+  display: inline;
+  float: left;
+  margin-right: 20px;
+  width: 300px;
+  width: 300px;
+  padding: 0;
+  margin-bottom: 20px;
+  position: relative;
+}
+* html #feature-list ul li {
+  overflow-x: hidden;
+}
+#feature-list ul li h4 {
+  margin-top: 5px;
+  color: #666;
+}
+#feature-list ul li p {
+  line-height: 1.3em;
+  color: #777;
+}
+#feature-list ul li .free {
+  display: block;
+  width: 64px;
+  height: 64px;
+  text-indent: -9999em;
+  background: url('../images/free.png') no-repeat;
+  position: absolute;
+  top: -5px;
+  right: -5px;
+}
+#feature-list ul li img {
+  border: 1px solid #ddd;
+  -moz-box-shadow: 0 0 3px rgba(0, 0, 0, 0.3);
+  -webkit-box-shadow: 0 0 3px rgba(0, 0, 0, 0.3);
+  -o-box-shadow: 0 0 3px rgba(0, 0, 0, 0.3);
+  box-shadow: 0 0 3px rgba(0, 0, 0, 0.3);
+}
+#feature-list ul li:nth-child(3n) {
+  margin-right: 0;
+}
+#feature-list ul li.last {
+  margin-right: 0;
+}
+#feature-list ul li:nth-child(n+4) {
+  margin-bottom: 0;
+  padding-bottom: 0;
+  border-bottom: 0;
+}
+#feature-list ul li.bottom {
+  margin-bottom: 0;
+  padding-bottom: 0;
+  border-bottom: 0;
+}
+
+/* Sign Up
+----------------------------------------*/
+#memberships.new h1, #memberships.create h1, #users.new h1, #users.create h1 {
+  text-shadow: white 0 1px 0;
+  color: #666;
+  font-size: 32px;
+  margin: 40px 0 10px;
+}
+#memberships.new h2, #memberships.create h2, #users.new h2, #users.create h2 {
+  color: #999;
+  font-size: 18px;
+  text-shadow: 0 1px 0 #fff;
+}
+
+#signup-form {
+  display: inline;
+  float: left;
+  margin-right: 20px;
+  width: 620px;
+  width: 620px;
+  padding: 0;
+}
+* html #signup-form {
+  overflow-x: hidden;
+}
+#signup-form fieldset {
+  -moz-border-radius: 10px;
+  -webkit-border-radius: 10px;
+  -o-border-radius: 10px;
+  -ms-border-radius: 10px;
+  -khtml-border-radius: 10px;
+  border-radius: 10px;
+  -moz-box-shadow: inset 0 0 5px rgba(0, 0, 0, 0.3);
+  -webkit-box-shadow: inset 0 0 5px rgba(0, 0, 0, 0.3);
+  -o-box-shadow: inset 0 0 5px rgba(0, 0, 0, 0.3);
+  box-shadow: inset 0 0 5px rgba(0, 0, 0, 0.3);
+  background: #fff;
+  padding: 20px;
+  margin-bottom: 20px;
+}
+#signup-form fieldset legend {
+  color: #ef802a;
+  font-size: 18px;
+  font-weight: bold;
+  width: 100%;
+  padding: 0;
+  position: relative;
+}
+#signup-form fieldset legend span {
+  position: absolute;
+  top: 15px;
+}
+#signup-form fieldset legend em {
+  text-shadow: rgba(0, 0, 0, 0.4) 0 -1px 0;
+  background: url('../images/dot-big.png') no-repeat;
+  color: #fff;
+  display: inline-block;
+  width: 24px;
+  height: 24px;
+  text-align: center;
+  margin-right: 3px;
+  font-style: normal;
+}
+#signup-form fieldset legend .code {
+  text-decoration: none;
+  border-bottom: 1px dotted #00aeef;
+  font-size: 12px;
+  font-weight: normal;
+  position: absolute;
+  top: 15px;
+  right: 0;
+}
+#signup-form fieldset legend .code:hover {
+  border-bottom: none;
+}
+#signup-form fieldset ol {
+  margin-top: 40px;
+}
+#signup-form fieldset ol span#or {
+  margin: 0px 20px;
+  color: #999;
+}
+#signup-form fieldset li {
+  *zoom: 1;
+  margin-bottom: 20px;
+}
+#signup-form fieldset li:after {
+  content: "\0020";
+  display: block;
+  height: 0;
+  clear: both;
+  overflow: hidden;
+  visibility: hidden;
+}
+#signup-form fieldset li label {
+  width: 130px;
+  padding-right: 10px;
+  display: inline-block;
+  text-align: right;
+  vertical-align: middle;
+}
+#signup-form fieldset li .inline-hints {
+  padding: 2px 0 2px 15px;
+  background: url('../images/10_info.png') no-repeat left center;
+  font-size: 12px;
+  color: #999;
+  margin: 5px 0 0 150px;
+  line-height: 1.5em;
+  background-position: 0 7px;
+}
+#signup-form fieldset li .inline-hints a {
+  text-decoration: none;
+  border-bottom: 1px dotted #00aeef;
+}
+#signup-form fieldset li .inline-hints a:hover {
+  border-bottom: none;
+}
+#signup-form fieldset li input {
+  background: #fafafa;
+}
+#signup-form fieldset li input:focus {
+  background: #fff;
+}
+#signup-form fieldset li select {
+  width: 340px;
+}
+#signup-form fieldset li:last-child {
+  margin-bottom: 10px;
+}
+#signup-form fieldset li.last {
+  margin-bottom: 10px;
+}
+#signup-form fieldset li.inline {
+  display: inline-block;
+}
+#signup-form fieldset li.state select {
+  width: 245px;
+  margin-right: 5px;
+}
+#signup-form fieldset li.optional label span {
+  display: block;
+  font-size: 11px;
+  color: #999;
+}
+#signup-form fieldset li.optional select {
+  width: 155px;
+}
+#signup-form fieldset li.plan label {
+  padding-top: 2px;
+}
+#signup-form fieldset li.plan strong {
+  font-size: 15px;
+  font-weight: bold;
+  margin-right: 5px;
+}
+#signup-form fieldset li.plan a {
+  text-decoration: none;
+  border-bottom: 1px dotted #00aeef;
+}
+#signup-form fieldset li.plan a:hover {
+  border-bottom: none;
+}
+#signup-form fieldset li.checkbox {
+  text-align: center;
+}
+#signup-form fieldset li.checkbox label {
+  width: auto;
+  float: none;
+}
+#signup-form fieldset li.checkbox a {
+  text-decoration: none;
+  border-bottom: 1px dotted #00aeef;
+}
+#signup-form fieldset li.checkbox a:hover {
+  border-bottom: none;
+}
+#signup-form fieldset li.error {
+  -moz-border-radius: 4px;
+  -webkit-border-radius: 4px;
+  -o-border-radius: 4px;
+  -ms-border-radius: 4px;
+  -khtml-border-radius: 4px;
+  border-radius: 4px;
+  overflow: hidden;
+  *zoom: 1;
+  background: #ffc;
+  border: 1px solid #dada99;
+  color: #c00;
+  font-weight: bold;
+  padding-top: 25px;
+  padding-bottom: 10px;
+}
+#signup-form fieldset li.error .inline-hints {
+  display: none;
+}
+#signup-form fieldset li.error .inline-errors {
+  font-size: 12px;
+  font-weight: normal;
+  margin: 5px 0 0 150px;
+  padding-left: 15px;
+  background: url('../images/10_alert.png') no-repeat 0 3px;
+}
+#signup-form fieldset li.error.hidden {
+  display: none;
+}
+#signup-form fieldset.buttons {
+  -moz-box-shadow: 0 0 0 black;
+  -webkit-box-shadow: 0 0 0 black;
+  -o-box-shadow: 0 0 0 black;
+  box-shadow: 0 0 0 black;
+  -moz-border-radius: 0;
+  -webkit-border-radius: 0;
+  -o-border-radius: 0;
+  -ms-border-radius: 0;
+  -khtml-border-radius: 0;
+  border-radius: 0;
+  background: transparent;
+  padding: 0;
+}
+#signup-form fieldset.buttons input {
+  -moz-box-shadow: 0 1px 1px rgba(0, 0, 0, 0.08);
+  -webkit-box-shadow: 0 1px 1px rgba(0, 0, 0, 0.08);
+  -o-box-shadow: 0 1px 1px rgba(0, 0, 0, 0.08);
+  box-shadow: 0 1px 1px rgba(0, 0, 0, 0.08);
+  border: 1px solid #ccc;
+  background: #eee;
+  font-weight: bold;
+  -moz-border-radius: 32px;
+  -webkit-border-radius: 32px;
+  -o-border-radius: 32px;
+  -ms-border-radius: 32px;
+  -khtml-border-radius: 32px;
+  border-radius: 32px;
+  font: bold 15px "Helvetica Neue", Helvetica, Arial, sans-serif;
+  padding: 8px 20px;
+  /* will need a gecko-only fix for inconsistent padding */
+  text-shadow: 0 -1px 0 #858f35;
+  background: #feb87a url('../images/button-orange.png') repeat-x center center;
+  color: #fff;
+  border-color: #f1ad85;
+}
+#signup-form fieldset.buttons input[disabled="disabled"] {
+  opacity: 0.4;
+}
+* + html #signup-form fieldset.buttons input {
+  overflow: visible;
+}
+
+#signup-extra {
+  display: inline;
+  float: left;
+  margin-right: 20px;
+  width: 300px;
+  width: 300px;
+  padding: 0;
+  margin-right: 0;
+}
+* html #signup-extra {
+  overflow-x: hidden;
+}
+#signup-extra h4 {
+  text-shadow: white 0 1px 0;
+  color: #666;
+  margin-top: 40px;
+  margin-bottom: 5px;
+}
+#signup-extra p {
+  color: #999;
+}
+#signup-extra #benefits {
+  margin: 20px 0;
+}
+#signup-extra #benefits li {
+  min-height: 32px;
+  height: auto !important;
+  height: 32px;
+  padding-left: 50px;
+  margin-bottom: 15px;
+}
+#signup-extra #benefits li h5 {
+  color: #666;
+  padding-top: 6px;
+}
+#signup-extra #benefits li.new {
+  background: url('../images/32_new.png') no-repeat center left;
+}
+#signup-extra #benefits li.happy {
+  background: url('../images/32_happy.png') no-repeat center left;
+}
+#signup-extra #benefits li.appointments {
+  background: url('../images/32_appointments.png') no-repeat center left;
+}
+#signup-extra #benefits li.receptionist {
+  background: url('../images/32_receptionist.png') no-repeat center left;
+}
+#signup-extra #benefits li.reminder {
+  background: url('../images/32_reminder.png') no-repeat center left;
+}
+#signup-extra #testimonials {
+  margin: 20px 0;
+}
+#signup-extra #testimonials li {
+  margin-bottom: 20px;
+  padding-bottom: 20px;
+  border-bottom: 1px dashed #ccc;
+}
+#signup-extra #testimonials li blockquote p {
+  color: #464646;
+  position: relative;
+  line-height: 1.1;
+}
+#signup-extra #testimonials li blockquote p:before {
+  content: "\201C";
+  font-size: 22px;
+  float: left;
+  margin: -3px 5px 0 0;
+}
+#signup-extra #testimonials li blockquote p:after {
+  content: "\201E";
+  font-size: 22px;
+  position: absolute;
+  margin-left: 5px;
+  margin-top: -5px;
+}
+#signup-extra #testimonials li p.source {
+  margin: 10px 0 0 15px;
+}
+
+/* Plans & Pricing
+----------------------------------------*/
+#memberships.plans h1 {
+  text-shadow: white 0 1px 0;
+  color: #666;
+  font-size: 32px;
+  margin: 40px 0 10px;
+  text-align: center;
+}
+#memberships.plans h2 {
+  color: #999;
+  font-size: 18px;
+  text-shadow: 0 1px 0 #fff;
+  text-align: center;
+}
+
+#plans {
+  *zoom: 1;
+  margin: 60px 0 40px 0;
+  text-align: center;
+}
+#plans:after {
+  content: "\0020";
+  display: block;
+  height: 0;
+  clear: both;
+  overflow: hidden;
+  visibility: hidden;
+}
+#plans > div {
+  -moz-border-radius: 10px;
+  -webkit-border-radius: 10px;
+  -o-border-radius: 10px;
+  -ms-border-radius: 10px;
+  -khtml-border-radius: 10px;
+  border-radius: 10px;
+  -moz-box-shadow: 0 0 3px rgba(0, 0, 0, 0.3);
+  -webkit-box-shadow: 0 0 3px rgba(0, 0, 0, 0.3);
+  -o-box-shadow: 0 0 3px rgba(0, 0, 0, 0.3);
+  box-shadow: 0 0 3px rgba(0, 0, 0, 0.3);
+  width: 238px;
+  height: 300px;
+  padding: 20px;
+  display: inline-block;
+  margin-right: -4px;
+  vertical-align: top;
+  background: #fefce8;
+  position: relative;
+  text-align: center;
+}
+#plans > div h3 {
+  text-shadow: 0 1px 0 white;
+  color: #464646;
+  margin-bottom: 5px;
+  font-size: 23px;
+}
+#plans > div h4 {
+  margin-bottom: 0;
+  color: #666;
+}
+#plans > div h4 strong {
+  background: #ffc;
+  padding: 1px 2px;
+}
+#plans > div h5 {
+  margin-bottom: 15px;
+  padding-bottom: 15px;
+  border-bottom: 1px dashed #ddd;
+  color: #999;
+}
+#plans > div ul {
+  margin-bottom: 20px;
+}
+#plans > div ul li {
+  font-size: 15px;
+  margin-bottom: 10px;
+}
+#plans > div ul li.more {
+  font-weight: bold;
+}
+#plans > div input {
+  -moz-box-shadow: 0 1px 1px rgba(0, 0, 0, 0.08);
+  -webkit-box-shadow: 0 1px 1px rgba(0, 0, 0, 0.08);
+  -o-box-shadow: 0 1px 1px rgba(0, 0, 0, 0.08);
+  box-shadow: 0 1px 1px rgba(0, 0, 0, 0.08);
+  border: 1px solid #ccc;
+  background: #eee;
+  font-weight: bold;
+  -moz-border-radius: 32px;
+  -webkit-border-radius: 32px;
+  -o-border-radius: 32px;
+  -ms-border-radius: 32px;
+  -khtml-border-radius: 32px;
+  border-radius: 32px;
+  font: bold 15px "Helvetica Neue", Helvetica, Arial, sans-serif;
+  padding: 8px 20px;
+  /* will need a gecko-only fix for inconsistent padding */
+  text-shadow: 0 -1px 0 #649cb1;
+  background: #61cff9 url('../images/button-blue.png') repeat-x center center;
+  color: #fff;
+  border-color: #44c1ea;
+  position: absolute;
+  left: 50%;
+  bottom: 20px;
+  margin-left: -65px;
+}
+#plans > div input[disabled="disabled"] {
+  opacity: 0.4;
+}
+* + html #plans > div input {
+  overflow: visible;
+}
+#plans > div p.conditions {
+  color: #999;
+  position: absolute;
+  bottom: 10px;
+}
+#plans > div.hi {
+  -moz-box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+  -webkit-box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+  -o-box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+  width: 250px;
+  height: 340px;
+  z-index: 9999;
+  background: #fff;
+  border: none;
+  position: relative;
+  top: -20px;
+  margin: 0 -10px;
+}
+#plans > div.hi input {
+  text-shadow: 0 -1px 0 #858f35;
+  background: #feb87a url('../images/button-orange.png') repeat-x center center;
+  color: #fff;
+  border-color: #f1ad85;
+  bottom: 40px;
+}
+
+/* Reusable elements
+----------------------------------------*/
+.promo {
+  -moz-border-radius: 10px;
+  -webkit-border-radius: 10px;
+  -o-border-radius: 10px;
+  -ms-border-radius: 10px;
+  -khtml-border-radius: 10px;
+  border-radius: 10px;
+  -moz-box-shadow: inset 0 0 5px rgba(0, 0, 0, 0.3);
+  -webkit-box-shadow: inset 0 0 5px rgba(0, 0, 0, 0.3);
+  -o-box-shadow: inset 0 0 5px rgba(0, 0, 0, 0.3);
+  box-shadow: inset 0 0 5px rgba(0, 0, 0, 0.3);
+  background: #fff;
+  *zoom: 1;
+  display: inline;
+  float: left;
+  margin-right: 20px;
+  width: 940px;
+  width: 900px;
+  padding: 20px;
+  margin-right: 0;
+}
+.promo:after {
+  content: "\0020";
+  display: block;
+  height: 0;
+  clear: both;
+  overflow: hidden;
+  visibility: hidden;
+}
+* html .promo {
+  overflow-x: hidden;
+}
+.promo h3 {
+  display: inline;
+  float: left;
+  position: relative;
+  top: 8px;
+  color: #555555;
+}
+.promo .cta {
+  display: inline;
+  float: right;
+  font-size: 15px;
+  color: #999;
+}
+.promo .cta a {
+  color: #ef802a;
+  text-decoration: none;
+  border-bottom: 1px dotted #ef802a;
+}
+.promo .cta a:hover {
+  border-bottom: none;
+}
+.promo .cta input {
+  -moz-box-shadow: 0 1px 1px rgba(0, 0, 0, 0.08);
+  -webkit-box-shadow: 0 1px 1px rgba(0, 0, 0, 0.08);
+  -o-box-shadow: 0 1px 1px rgba(0, 0, 0, 0.08);
+  box-shadow: 0 1px 1px rgba(0, 0, 0, 0.08);
+  border: 1px solid #ccc;
+  background: #eee;
+  font-weight: bold;
+  -moz-border-radius: 32px;
+  -webkit-border-radius: 32px;
+  -o-border-radius: 32px;
+  -ms-border-radius: 32px;
+  -khtml-border-radius: 32px;
+  border-radius: 32px;
+  font: bold 15px "Helvetica Neue", Helvetica, Arial, sans-serif;
+  padding: 8px 20px;
+  /* will need a gecko-only fix for inconsistent padding */
+  text-shadow: 0 -1px 0 #858f35;
+  background: #feb87a url('../images/button-orange.png') repeat-x center center;
+  color: #fff;
+  border-color: #f1ad85;
+}
+.promo .cta input[disabled="disabled"] {
+  opacity: 0.4;
+}
+* + html .promo .cta input {
+  overflow: visible;
+}

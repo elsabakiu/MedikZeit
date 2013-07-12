@@ -1,0 +1,35 @@
+#{extends 'main.html' /}
+#{set title:'MedikZeit - Find doctors near to your area' /}
+
+<div>
+
+	<form action="@Application.findDoctor() }" method="POST">
+		<p>
+			<label> Select your location/city</label>
+			<select>
+				<option value = "munich">Munich </option>
+				<option value = "berlin">Berlin </option>
+				<option value = "hamburg">Hamburg </option> 
+			</select>
+		</p>
+		
+		<p>
+			<label> Select doctor's speciality</label>
+			<select>
+				<option value = "dentist">Dentist </option>
+				<option value = "dermatologist">Dermatologist </option>
+				<option value = "primarycare">Primary Care Doctor </option> 
+			</select>
+		</p>
+		
+		<p>
+			<label> Select your insurance type</label>
+			<select>
+				<option value = "public">Public </option>
+				<option value = "private">Private </option> 
+			</select>
+		</p>
+		<input type="submit" name="find" value="Find Doctors"/>
+	</form>
+
+</div>

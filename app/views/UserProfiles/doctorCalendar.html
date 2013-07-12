@@ -1,0 +1,10 @@
+#{extends 'main.html' /}
+#{set title:'MedikZeit - Doctor Calendar' /}
+
+
+  <div id = "tabs" role = "navigation">
+  	<ul>
+  		<li class = "active"> <a href = "@{UserProfiles.doctorProfile()}"> Personal information </a> </li>
+  		<li> <a href = "@{UserProfiles.doctorCalendar()}"> Calendar </a> </li>
+  	</ul>
+  </div>   
