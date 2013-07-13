@@ -310,7 +310,7 @@
             var calendarHeight = options.height(this.element);
             var headerHeight = this.element.find(".wc-header").outerHeight();
             var navHeight = this.element.find(".wc-nav").outerHeight();
-            this.element.find(".wc-scrollable-grid").height(calendarHeight - navHeight - headerHeight);
+            this.element.find(".wc-scrollable-grid").height("401px");
          }
       },
 

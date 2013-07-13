@@ -1,7 +1,7 @@
 #{extends 'main.html' /}
 #{set title:'Calendar' /}
 
-	<link href="@{'/public/stylesheets/demo.css'}" rel="stylesheet" type="text/css" />  
+<link href="@{'/public/stylesheets/demo.css'}" rel="stylesheet" type="text/css" />  
     <link href="@{'/public/stylesheets/reset.css'}"  rel="stylesheet" type="text/css" />
     <link href="@{'/public/stylesheets/jquery.weekcalendar.css'}" rel="stylesheet" type="text/css" /> 
     <link href="@{'/public/javascripts/libs/css/smoothness/jquery-ui-1.8rc3.custom.css'}" rel="stylesheet" type="text/css" /> 
@@ -335,21 +335,32 @@ $(document).ready(function() {
 
 </script>
 
-</head>
-<body> 
+<div id="main">
+      <div id="content" role="main">
+    
+
+
+  <!-- page top Nav -->
+
 
 	  <div id = "tabs" role = "navigation">
 	  	<ul>
-	  		<li class = "active"> <a href = "@{UserProfiles.doctorProfile()}"> Personal information </a> </li>
-	  		<li> <a href = "@{Calendar.index()}"> Calendar </a> </li>
+			<li><a href="@{Application.index()}">Home</a></li>	  		
+			<li> <a href = "@{UserProfiles.doctorProfile()}"> My Settings </a> </li>
+	  		<li class = "active"> <a href = "@{Calendar.index()}"> Calendar </a> </li>
 	  	</ul>
 	  </div>
     
     
-    <div id = "saveEditMessage">
-    </div>
+    	<div id = "saveEditMessage"></div>
     
 	<div id='calendar'></div>
+</div>
+</div>
+
+
+
+
 	<div id="event_edit_container">
 	
 		<form>
@@ -376,3 +387,4 @@ $(document).ready(function() {
 			</ul>
 		</form>
 	</div>
+

@@ -16,10 +16,12 @@
 				<form action="@{Authenticate.doRegister() }" class="formtastic person" id="new_person" method="post">
 		
 				<fieldset class="inputs">
-				<legend><span>Your Account</span></legend>
+				<legend><span>Your Account</span>
+
+
+				<a href="@{Authenticate.registerDoctor() }" class="code" tabindex="1000">Doctor or dentist? Sign-up here instead.</a>
+				</legend>
 								
-				<br>	
-				<a href = "@{Authenticate.registerDoctor() }"> Doctor or dentist? Sign-up here instead.</a>
 				
 					<ol>
 			

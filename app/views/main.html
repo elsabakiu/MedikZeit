@@ -91,10 +91,26 @@
           	</ul>
           	
 			<div id="user">
-			  			<ul>
-			  					<li><a href="@{Authenticate.doRegister() }" class="dropdown">Sign-up</a>
-			    				
+			<ul>
+			<li> 
+								    %{
+								   		if (session.get("loggedInUser") != null)
+								   		{
+											String email = session.get("loggedInUser");
+											models.User user = (models.User) models.User.find("email = ? ", email).fetch().get(0);
+								     }%
+								    	Loged in as <a href="@{Authenticate.logout()}"> ${user.firstname} ${user.lastname} </a> &nbsp;&nbsp;&nbsp;
+									%{
+										}
+										else
+										{
+									%}
+										<a href="@{Authenticate.doRegister() }" class="dropdown">Sign-up</a>
+								    %{
+								    	}
+								    }%
 								</li>
+
 			
 			  					<li> 
 								    %{
@@ -114,7 +130,7 @@
 								</li>
 						</ul>
 					</div>
-					</div>
+				</div>
 				</div>
 			</div>
     <!-- End navigation -->

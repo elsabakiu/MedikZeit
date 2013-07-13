@@ -24,58 +24,98 @@
   
 <div id="main">
       <div id="content" role="main">
-      
-<form id="signUpDoctor" action = @{Authenticate.saveDoctor()} class="formular" method="POST" accept-charset="${_response_encoding}">
-  
-<h2>Personal Info</h2>
 
-		<p>
-		<label>First name</label>
-			<input type="text" name="doctor.user.firstname" id="doctor.user.firstname" class="validate[required,maxSize[20]] text-input"/>
-		</p>
-		<p>
-			<label>Last name</label>
-			<input type="text" name="doctor.user.lastname" id="doctor.user.lastname" class="validate[required,maxSize[20]] text-input"/>
-		</p>
+
+<div><h1>Sign up free today for the next six months</h1></div>
+
+<div id="signup-form">
+
+<form id="signUpDoctor" action = @{Authenticate.saveDoctor()} class="formular formtastic person" method="POST" accept-charset="${_response_encoding}">
+	<fieldset class="inputs">
+	<legend><span>Personal Information</span></legend>
+								
+	<br>	
+				
+	<ol>
+			
+    	<li class="string optional" id="person_first_name_input">
+    	<label for="person_first_name">First Name</label>
+	<input type="text" name="doctor.user.firstname" id="doctor.user.firstname" class="validate[required,maxSize[50]] text-input"/>
+
+    	</li>
+    		
+    	<li class="string optional" id="person_last_name_input">
+    	<label for="person_last_name">Last Name</label>
+	<input type="text" name="doctor.user.lastname" id="doctor.user.lastname" class="validate[required,maxSize[70]] text-input"/>
+
+    	</li>
+    		
+    	<li class="string optional" id="person_user_attributes_clinic">			
+    	<label for="person_last_name">Clinic Name</label>
+	<input type="text" name="doctor.docClinicName" id="doctor.docClinicName" class="validate[maxSize[50]] text-input"/>
+	</li>
 		
-		<p>
-			<label>Clinic Name</label>
-			<input type="text" name="doctor.docClinicName" id="doctor.docClinicName" class="validate[maxSize[50]] text-input"/>
-		</p>
-		<p>
-			<label>Insurance</label>
+
+
+
+	<li class="string optional" id="person_user_attributes_insurance">
+
+	<label for="person_last_name">Insurance </label>
 			#{select 'doctor.user.insurance.id'}
 				#{option 1} Public Insurance #{/option}
 				#{option 2} Private Insurance #{/option}
 			#{/select}
-    	</p>
-		<p>
-			<label>Specialization</label>
+	</li>
+
+	<li class="string optional" id="person_last_name_input">
+	<label for="person_last_name">Specialization </label>
 			#{select 'doctor.docSpecialization.id'}
 				#{option 1} Dentist #{/option}
 				#{option 2} Dermatologist #{/option}
 			#{/select}
-    	</p>
-    </p>
-    
-    <h2>Account Information</h2>
-   			<p>
-				<label>Email</label>
-				<input type="text" name="doctor.user.email" id="doctor.user.email" class = "validate[email, required, maxSize[20]]"/>
-			</p>
-			<p>
-				<label>Password</label>
-				<input type="password" name="doctor.user.password" id="password" class = "validate[required,maxSize[20]] text-input" />
-			</p>
-			<p>
-				<label>Confirm password</label>
-				<input type="password" name="confirmPassword" id="confirmPassword" class = "validate[maxSize[20], equals[password]] text-input" />
-			</p>	
-			<p class="buttons" style = "align : right">
-				<input type="submit" value="Save" class = "submit" id="saveDoctorData" />
-			</p>
-		</form>
+	</li>
+	
+	
+	<legend><span>Account Information</span></legend>
+	<br /><br /><br /><br />
+
+    	<li class="string optional" id="person_user_attributes_email_input">
+	<label for="person_user_attributes_email">Email</label>
+	<input type="text" name="doctor.user.email" id="doctor.user.email" class = "validate[email, required, maxSize[50]]"/>
+	<p class="inline-hints">This will be your username</p>
+	</li>	
 		
+	<li class="password optional" id="person_user_attributes_password_input">
+      	<label for="person_user_attributes_password">Password</label>
+	<input type="password" name="doctor.user.password" id="password" class = "validate[required,maxSize[50]] text-input" />
+
+      	</li>
+
+      	<li class="password optional" id="person_user_attributes_password_input">
+      	<label for="person_user_attributes_password">Confirm Password</label>
+	<input type="password" name="confirmPassword" id="confirmPassword" class = "validate[maxSize[50], equals[password]] text-input" />
+
+      	</li>	
+			
+      	</ol>
+	</fieldset>
+		
+	<fieldset class="buttons">
+	<ol><input id="saveDoctorData" name="commit" type="submit" value="Complete Your Registration" /></ol>
+	</fieldset>
+	</form>
+	</div>
+				
+	<!-- °°°°°°°° -->
+	<div id="signup-extra">
+  	<h4>Thanks for choosing MedikZeit!</h4>
+
+  	<p>You're now on your way to:</p>
+  	<ul id="benefits">
+    	<li class="appointments"><h5>Managing your appointments</h5></li>
+  	</ul>
+  	</div>
+  	<!-- °°°°°°°° -->
 		
 </div>
 </div>
